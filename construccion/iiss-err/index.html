@@ -1,0 +1,1694 @@
+
+
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+        <meta name="description" content="Apuntes de Implementación e Implantación de Sistemas Software – Grado en Ingeniería Informática">
+      
+      
+      
+        <meta name="author" content="Juan Manuel Dodero">
+      
+      
+        <meta name="lang:clipboard.copy" content="Copy to clipboard">
+      
+        <meta name="lang:clipboard.copied" content="Copied to clipboard">
+      
+        <meta name="lang:search.language" content="en">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="No matching documents">
+      
+        <meta name="lang:search.result.one" content="1 matching document">
+      
+        <meta name="lang:search.result.other" content="# matching documents">
+      
+        <meta name="lang:search.tokenizer" content="[\s\-]+">
+      
+      <link rel="shortcut icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.1, mkdocs-material-4.6.3">
+    
+    
+      
+        <title>Calidad - Implementación e Implantación de Sistemas Software</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/application.adb8469c.css">
+      
+      
+    
+    
+      <script src="../assets/javascripts/modernizr.86422ebf.js"></script>
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+      
+    
+    <link rel="stylesheet" href="../assets/fonts/material-icons.css">
+    
+    
+    
+      
+    
+    
+  </head>
+  
+    <body dir="ltr">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+          <svg xmlns="http://www.w3.org/2000/svg" width="416" height="448" viewBox="0 0 416 448" id="__github"><path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19T128 352t-18.125-8.5-10.75-19T96 304t3.125-20.5 10.75-19T128 256t18.125 8.5 10.75 19T160 304zm160 0q0 10-3.125 20.5t-10.75 19T288 352t-18.125-8.5-10.75-19T256 304t3.125-20.5 10.75-19T288 256t18.125 8.5 10.75 19T320 304zm40 0q0-30-17.25-51T296 232q-10.25 0-48.75 5.25Q229.5 240 208 240t-39.25-2.75Q130.75 232 120 232q-29.5 0-46.75 21T56 304q0 22 8 38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0 37.25-1.75t35-7.375 30.5-15 20.25-25.75T360 304zm56-44q0 51.75-15.25 82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5T212 416q-19.5 0-35.5-.75t-36.875-3.125-38.125-7.5-34.25-12.875T37 371.5t-21.5-28.75Q0 312 0 260q0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25 30.875Q171.5 96 212 96q37 0 70 8 26.25-20.5 46.75-30.25T376 64q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34 99.5z"/></svg>
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    
+      <a href="#calidad" tabindex="0" class="md-skip">
+        Skip to content
+      </a>
+    
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href=".." title="Implementación e Implantación de Sistemas Software" aria-label="Implementación e Implantación de Sistemas Software" class="md-header-nav__button md-logo">
+          
+            <i class="md-icon"></i>
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            <span class="md-header-nav__topic">
+              Implementación e Implantación de Sistemas Software
+            </span>
+            <span class="md-header-nav__topic">
+              
+                Calidad
+              
+            </span>
+          
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+          
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" aria-label="search" name="query" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            Type to start searching
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+        
+      </div>
+      
+        <div class="md-flex__cell md-flex__cell--shrink">
+          <div class="md-header-nav__source">
+            
+
+
+  
+
+<a href="https://github.com/sistemas-sw/construccion/" title="Go to repository" class="md-source" data-md-source="github">
+  
+    <div class="md-source__icon">
+      <svg viewBox="0 0 24 24" width="24" height="24">
+        <use xlink:href="#__github" width="24" height="24"></use>
+      </svg>
+    </div>
+  
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+          </div>
+        </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+        
+      
+      
+      <main class="md-main" role="main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href=".." title="Implementación e Implantación de Sistemas Software" class="md-nav__button md-logo">
+      
+        <i class="md-icon"></i>
+      
+    </a>
+    Implementación e Implantación de Sistemas Software
+  </label>
+  
+    <div class="md-nav__source">
+      
+
+
+  
+
+<a href="https://github.com/sistemas-sw/construccion/" title="Go to repository" class="md-source" data-md-source="github">
+  
+    <div class="md-source__icon">
+      <svg viewBox="0 0 24 24" width="24" height="24">
+        <use xlink:href="#__github" width="24" height="24"></use>
+      </svg>
+    </div>
+  
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href=".." title="Inicio" class="md-nav__link">
+      Inicio
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2">
+    
+    <label class="md-nav__link" for="nav-2">
+      Asignatura
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        Asignatura
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../iiss-pres/" title="Presentación" class="md-nav__link">
+      Presentación
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../bibliografia/" title="Bibliografía" class="md-nav__link">
+      Bibliografía
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../about/" title="About" class="md-nav__link">
+      About
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../iiss-temas/" title="Temario" class="md-nav__link">
+      Temario
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4" checked>
+    
+    <label class="md-nav__link" for="nav-4">
+      I. Objetos
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        I. Objetos
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../iiss-oop-1/" title="Principios" class="md-nav__link">
+      Principios
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../iiss-oop-2/" title="Delegación" class="md-nav__link">
+      Delegación
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../iiss-oop-3/" title="Inyección" class="md-nav__link">
+      Inyección
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../iiss-oop-4/" title="Duplicación" class="md-nav__link">
+      Duplicación
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Calidad
+      </label>
+    
+    <a href="./" title="Calidad" class="md-nav__link md-nav__link--active">
+      Calidad
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#tratamiento-de-errores" class="md-nav__link">
+    Tratamiento de errores
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#codigos-de-error" class="md-nav__link">
+    Códigos de error
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#excepciones" class="md-nav__link">
+    Excepciones
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#separar-la-funcion-y-el-tratamiento-de-errores" class="md-nav__link">
+    Separar la función y el tratamiento de errores
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#excepciones-en-java" class="md-nav__link">
+    Excepciones en Java
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tipos-de-excepciones-en-java" class="md-nav__link">
+    Tipos de excepciones en Java
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tratamiento-de-excepciones-en-java" class="md-nav__link">
+    Tratamiento de excepciones en Java
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#recomendaciones" class="md-nav__link">
+    Recomendaciones
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#transformacion-de-excepciones" class="md-nav__link">
+    Transformación de excepciones
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#transformar-en-unchecked" class="md-nav__link">
+    Transformar en unchecked
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#excepciones-encapsuladas" class="md-nav__link">
+    Excepciones encapsuladas
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#las-excepciones-son-excepcionales" class="md-nav__link">
+    Las excepciones son excepcionales
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#uso-de-null" class="md-nav__link">
+    Uso de null
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#principio-general-no-devolver-null" class="md-nav__link">
+    Principio general: no devolver null
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#no-devolver-null" class="md-nav__link">
+    No devolver null
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#no-pasar-valores-null" class="md-nav__link">
+    No pasar valores null
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#alternativa-con-aserciones" class="md-nav__link">
+    Alternativa con aserciones
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#optionals" class="md-nav__link">
+    Optionals
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#scala-option" class="md-nav__link">
+    Scala Option
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#java-8-optional" class="md-nav__link">
+    Java 8 Optional
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#carencias-de-optional" class="md-nav__link">
+    Carencias de Optional
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../iiss-aop/" title="II. Aspectos" class="md-nav__link">
+      II. Aspectos
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../iiss-dbc/" title="III. Contratos" class="md-nav__link">
+      III. Contratos
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7" type="checkbox" id="nav-7">
+    
+    <label class="md-nav__link" for="nav-7">
+      IV. Funciones
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-7">
+        IV. Funciones
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../iiss-fp-1/" title="Interfaces funcionales" class="md-nav__link">
+      Interfaces funcionales
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../iiss-fp-2/" title="Lambdas" class="md-nav__link">
+      Lambdas
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../iiss-fp-3/" title="Mixins" class="md-nav__link">
+      Mixins
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8" type="checkbox" id="nav-8">
+    
+    <label class="md-nav__link" for="nav-8">
+      V. Eventos
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-8">
+        V. Eventos
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../iiss-evp-1/" title="Listeners" class="md-nav__link">
+      Listeners
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../iiss-evp-2/" title="Asíncronas" class="md-nav__link">
+      Asíncronas
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../iiss-evp-3/" title="Eventos" class="md-nav__link">
+      Eventos
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#tratamiento-de-errores" class="md-nav__link">
+    Tratamiento de errores
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#codigos-de-error" class="md-nav__link">
+    Códigos de error
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#excepciones" class="md-nav__link">
+    Excepciones
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#separar-la-funcion-y-el-tratamiento-de-errores" class="md-nav__link">
+    Separar la función y el tratamiento de errores
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#excepciones-en-java" class="md-nav__link">
+    Excepciones en Java
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tipos-de-excepciones-en-java" class="md-nav__link">
+    Tipos de excepciones en Java
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tratamiento-de-excepciones-en-java" class="md-nav__link">
+    Tratamiento de excepciones en Java
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#recomendaciones" class="md-nav__link">
+    Recomendaciones
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#transformacion-de-excepciones" class="md-nav__link">
+    Transformación de excepciones
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#transformar-en-unchecked" class="md-nav__link">
+    Transformar en unchecked
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#excepciones-encapsuladas" class="md-nav__link">
+    Excepciones encapsuladas
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#las-excepciones-son-excepcionales" class="md-nav__link">
+    Las excepciones son excepcionales
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#uso-de-null" class="md-nav__link">
+    Uso de null
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#principio-general-no-devolver-null" class="md-nav__link">
+    Principio general: no devolver null
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#no-devolver-null" class="md-nav__link">
+    No devolver null
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#no-pasar-valores-null" class="md-nav__link">
+    No pasar valores null
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#alternativa-con-aserciones" class="md-nav__link">
+    Alternativa con aserciones
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#optionals" class="md-nav__link">
+    Optionals
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#scala-option" class="md-nav__link">
+    Scala Option
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#java-8-optional" class="md-nav__link">
+    Java 8 Optional
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#carencias-de-optional" class="md-nav__link">
+    Carencias de Optional
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/sistemas-sw/construccion/edit/master/docs/iiss-err.md" title="Edit this page" class="md-icon md-content__icon">&#xE3C9;</a>
+                
+                
+                <h0>CALIDAD</h0>
+<h1 id="calidad"><span style="color:blue;">Calidad</span><a class="headerlink" href="#calidad" title="Permanent link">&para;</a></h1>
+<p><a id="errores"></a></p>
+<h2 id="tratamiento-de-errores">Tratamiento de errores<a class="headerlink" href="#tratamiento-de-errores" title="Permanent link">&para;</a></h2>
+<h3 id="codigos-de-error">Códigos de error<a class="headerlink" href="#codigos-de-error" title="Permanent link">&para;</a></h3>
+<p>Un ejemplo habitual de tratamiento de errores con <strong>códigos de error</strong> en un lenguaje como C:</p>
+<div class="highlight"><pre><span></span><code><span class="k">if</span> <span class="p">(</span><span class="n">deletePage</span><span class="p">(</span><span class="n">page</span><span class="p">)</span> <span class="o">==</span> <span class="n">E_OK</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">registry</span><span class="p">.</span><span class="na">deleteReference</span><span class="p">(</span><span class="n">page</span><span class="p">.</span><span class="na">name</span><span class="p">)</span> <span class="o">==</span> <span class="n">E_OK</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">configKeys</span><span class="p">.</span><span class="na">deleteKey</span><span class="p">(</span><span class="n">page</span><span class="p">.</span><span class="na">name</span><span class="p">.</span><span class="na">makeKey</span><span class="p">())</span> <span class="o">==</span> <span class="n">E_OK</span><span class="p">){</span>
+      <span class="n">logger</span><span class="p">.</span><span class="na">log</span><span class="p">(</span><span class="s">&quot;page deleted&quot;</span><span class="p">);</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+      <span class="n">logger</span><span class="p">.</span><span class="na">log</span><span class="p">(</span><span class="s">&quot;configKey not deleted&quot;</span><span class="p">);</span>
+    <span class="p">}</span>
+  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="n">logger</span><span class="p">.</span><span class="na">log</span><span class="p">(</span><span class="s">&quot;deleteReference from registry failed&quot;</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+  <span class="n">logger</span><span class="p">.</span><span class="na">log</span><span class="p">(</span><span class="s">&quot;delete failed&quot;</span><span class="p">);</span>
+  <span class="k">return</span> <span class="n">E_ERROR</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p>Con esta técnica creamos <em>imanes de dependencias</em>:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span> <span class="kd">enum</span> <span class="n">Error</span> <span class="p">{</span>
+  <span class="n">OK</span><span class="p">,</span>
+  <span class="n">INVALID</span><span class="p">,</span>
+  <span class="n">NO_SUCH</span><span class="p">,</span>
+  <span class="n">LOCKED</span><span class="p">,</span>
+  <span class="n">OUT_OF_RESOURCES</span><span class="p">,</span>
+  <span class="n">WAITING_FOR_EVENT</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<div class="admonition failure mala práctica">
+<p class="admonition-title">Failure</p>
+<p>Los programadores intentan evitar añadir nuevos motivos de error, porque eso significa tener que volver a compilar y desplegar todo el código.</p>
+</div>
+<h2 id="excepciones">Excepciones<a class="headerlink" href="#excepciones" title="Permanent link">&para;</a></h2>
+<p>Muchos lenguajes usan <strong>excepciones</strong> en lugar de códigos de error:</p>
+<div class="highlight"><pre><span></span><code><span class="k">try</span> <span class="p">{</span>
+<span class="hll">  <span class="n">deletePage</span><span class="p">(</span><span class="n">page</span><span class="p">);</span>
+</span><span class="hll">  <span class="n">registry</span><span class="p">.</span><span class="na">deleteReference</span><span class="p">(</span><span class="n">page</span><span class="p">.</span><span class="na">name</span><span class="p">);</span>
+</span><span class="hll">  <span class="n">configKeys</span><span class="p">.</span><span class="na">deleteKey</span><span class="p">(</span><span class="n">page</span><span class="p">.</span><span class="na">name</span><span class="p">.</span><span class="na">makeKey</span><span class="p">());</span>
+</span><span class="p">}</span>
+<span class="k">catch</span> <span class="p">(</span><span class="n">Exception</span> <span class="n">e</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">logger</span><span class="p">.</span><span class="na">log</span><span class="p">(</span><span class="n">e</span><span class="p">.</span><span class="na">getMessage</span><span class="p">());</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p>¿No queda más claro?</p>
+<div class="admonition success">
+<p class="admonition-title">Ventaja</p>
+<p>Las nuevas excepciones son derivadas de una clase base <code>Exception</code>, lo que facilita la definición de nuevos motivos de error.</p>
+</div>
+<div class="admonition question">
+<p class="admonition-title"><span style="color:red;">¿Dónde se produce el error?</span></p>
+<p>Si se eleva una excepción en el ejemplo anterior, ¿en cuál de las instrucciones del bloque <code>try</code> se ha producido?</p>
+</div>
+<h3 id="separar-la-funcion-y-el-tratamiento-de-errores">Separar la función y el tratamiento de errores<a class="headerlink" href="#separar-la-funcion-y-el-tratamiento-de-errores" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span> <span class="kt">void</span> <span class="nf">delete</span><span class="p">(</span><span class="n">Page</span> <span class="n">page</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">try</span> <span class="p">{</span>
+    <span class="n">deletePageAndAllReferences</span><span class="p">(</span><span class="n">page</span><span class="p">);</span>
+  <span class="p">}</span>
+  <span class="k">catch</span> <span class="p">(</span><span class="n">Exception</span> <span class="n">e</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">logError</span><span class="p">(</span><span class="n">e</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">private</span> <span class="kt">void</span> <span class="nf">deletePageAndAllReferences</span><span class="p">(</span><span class="n">Page</span> <span class="n">page</span><span class="p">)</span> <span class="kd">throws</span> <span class="n">Exception</span> <span class="p">{</span>
+  <span class="n">deletePage</span><span class="p">(</span><span class="n">page</span><span class="p">);</span>
+  <span class="n">registry</span><span class="p">.</span><span class="na">deleteReference</span><span class="p">(</span><span class="n">page</span><span class="p">.</span><span class="na">name</span><span class="p">);</span>
+  <span class="n">configKeys</span><span class="p">.</span><span class="na">deleteKey</span><span class="p">(</span><span class="n">page</span><span class="p">.</span><span class="na">name</span><span class="p">.</span><span class="na">makeKey</span><span class="p">());</span>
+<span class="p">}</span>
+
+<span class="kd">private</span> <span class="kt">void</span> <span class="nf">logError</span><span class="p">(</span><span class="n">Exception</span> <span class="n">e</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">logger</span><span class="p">.</span><span class="na">log</span><span class="p">(</span><span class="n">e</span><span class="p">.</span><span class="na">getMessage</span><span class="p">());</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p>¿No queda más fácil de comprender, modificar y depurar?</p>
+<h3 id="excepciones-en-java">Excepciones en Java<a class="headerlink" href="#excepciones-en-java" title="Permanent link">&para;</a></h3>
+<h4 id="tipos-de-excepciones-en-java">Tipos de excepciones en Java<a class="headerlink" href="#tipos-de-excepciones-en-java" title="Permanent link">&para;</a></h4>
+<dl>
+<dt><strong>Checked</strong></dt>
+<dd>Instancias de clases derivadas de <code>java.lang.Throwable</code> (menos <code>RuntimeException</code>). Deben declararse en el método mediante <code>throws</code> y obligan al llamador a tratar la excepción.</dd>
+<dt><strong>Unchecked</strong></dt>
+<dd>Instancias de clases derivadas de <code>java.lang.RuntimeException</code>. No se declaran en el método y no obligan al llamador a tratar la excepción.</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">¿Qué implica elevar una excepción <code>e</code> en Java?</p>
+<ol>
+<li>Deshacer (<em>roll back</em>) la llamada a un método...</li>
+<li>...hasta que se encuentre un bloque catch para el tipo de <code>e</code> y...</li>
+<li>si no se encuentra, la excepción es capturada por la JVM, que detiene el programa</li>
+</ol>
+</div>
+<h4 id="tratamiento-de-excepciones-en-java">Tratamiento de excepciones en Java<a class="headerlink" href="#tratamiento-de-excepciones-en-java" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code>  <span class="k">try</span> <span class="p">{</span>
+      <span class="cm">/* guarded region that can send</span>
+<span class="cm">        IOException or Exception */</span>
+  <span class="p">}</span>
+  <span class="k">catch</span> <span class="p">(</span><span class="n">IOException</span> <span class="n">e</span><span class="p">)</span> <span class="p">{</span>
+      <span class="cm">/* decide what to do when an IOException</span>
+<span class="cm">        or a sub-class of IOException occurs */</span>
+  <span class="p">}</span>
+  <span class="k">catch</span> <span class="p">(</span><span class="n">Exception</span> <span class="n">e</span><span class="p">)</span> <span class="p">{</span>
+      <span class="c1">// Treats any other exceptions</span>
+  <span class="p">}</span>
+  <span class="k">finally</span> <span class="p">{</span>
+      <span class="c1">// in all cases execute this</span>
+  <span class="p">}</span>
+</code></pre></div>
+
+<h3 id="recomendaciones">Recomendaciones<a class="headerlink" href="#recomendaciones" title="Permanent link">&para;</a></h3>
+<p>Incluir el <strong>contexto</strong> de la ejecución:</p>
+<ul>
+<li>Incluir información suficiente con cada excepción para determinar el motivo y la ubicación de un error</li>
+<li>No basta con el <em>stack trace</em></li>
+<li>Escribir mensajes informativos: operación fallida y tipo de fallo</li>
+</ul>
+<p>Los beneficios de las excepciones <em>checked</em> en Java son mínimos: <a href="https://testing.googleblog.com/2009/09/checked-exceptions-i-love-you-but-you.html">¿por qué</a>. Se recomienda usar solamente excepciones <strong>unchecked</strong>.</p>
+<ul>
+<li>C#, C++, Python o Ruby no ofrecen excepciones <em>checked</em>.</li>
+<li>Scala no usa excepciones <em>checked</em> como Java: <a href="https://madusudanan.com/blog/scala-tutorials-part-24-exception-handling/#Intro">Scala exception handling</a></li>
+<li>Se paga el precio de violar el principio OCP (<em>Open-Closed Principle</em>): si lanzamos una excepción <em>checked</em> desde un método y el <code>catch</code> está tres niveles por encima, hay que declarar la excepción en la signatura de todos los métodos que van entre medias. Esto significa que un cambio en un nivel bajo del software puede forzar cambios en niveles altos.</li>
+</ul>
+<h3 id="transformacion-de-excepciones">Transformación de excepciones<a class="headerlink" href="#transformacion-de-excepciones" title="Permanent link">&para;</a></h3>
+<h4 id="transformar-en-unchecked">Transformar en unchecked<a class="headerlink" href="#transformar-en-unchecked" title="Permanent link">&para;</a></h4>
+<p>Muchas APIs de Java lanzan excepciones checked cuando deberían ser unchecked</p>
+<p><strong>Ejemplo</strong>: Al ejecutar una consulta mediante <code>executeQuery</code> en el API de JDBC se lanza una excepción <code>java.sql.SQLException</code> (de tipo checked) si la SQL es errónea.</p>
+<p><strong>Solución</strong>:</p>
+<p>Transformar las excepciones checked en unchecked:</p>
+<div class="highlight"><pre><span></span><code>  <span class="k">try</span> <span class="p">{</span>
+    <span class="c1">// Codigo que genera la excepcion checked</span>
+  <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="n">Exception</span> <span class="n">ex</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">throw</span> <span class="k">new</span> <span class="n">RuntimeException</span><span class="p">(</span><span class="s">&quot;Unchecked exception&quot;</span><span class="p">,</span> <span class="n">ex</span><span class="p">)</span>
+  <span class="p">}</span>
+</code></pre></div>
+
+<h4 id="excepciones-encapsuladas">Excepciones encapsuladas<a class="headerlink" href="#excepciones-encapsuladas" title="Permanent link">&para;</a></h4>
+<p>Criticar la siguiente implementación:</p>
+<div class="highlight"><pre><span></span><code>  <span class="n">ACMEPort</span> <span class="n">port</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ACMEPort</span><span class="p">(</span><span class="mi">12</span><span class="p">);</span>
+  <span class="k">try</span> <span class="p">{</span>
+    <span class="n">port</span><span class="p">.</span><span class="na">open</span><span class="p">();</span>
+  <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="n">DeviceResponseException</span> <span class="n">e</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">reportPortError</span><span class="p">(</span><span class="n">e</span><span class="p">);</span>
+    <span class="n">logger</span><span class="p">.</span><span class="na">log</span><span class="p">(</span><span class="s">&quot;Device response exception&quot;</span><span class="p">,</span> <span class="n">e</span><span class="p">);</span>
+  <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="n">ATM1212UnlockedException</span> <span class="n">e</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">reportPortError</span><span class="p">(</span><span class="n">e</span><span class="p">);</span>
+    <span class="n">logger</span><span class="p">.</span><span class="na">log</span><span class="p">(</span><span class="s">&quot;Unlock exception&quot;</span><span class="p">,</span> <span class="n">e</span><span class="p">);</span>
+  <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="n">GMXError</span> <span class="n">e</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">reportPortError</span><span class="p">(</span><span class="n">e</span><span class="p">);</span>
+    <span class="n">logger</span><span class="p">.</span><span class="na">log</span><span class="p">(</span><span class="s">&quot;Device response exception&quot;</span><span class="p">);</span>
+  <span class="p">}</span> <span class="k">finally</span> <span class="p">{</span>
+    <span class="p">...</span>
+  <span class="p">}</span>
+</code></pre></div>
+
+<div class="admonition question">
+<p class="admonition-title">Excesiva duplicación de código</p>
+<p>La llamada a <code>reportPortError()</code> se repite mucho.
+<span style="color:red;">¿Cómo evitar la excesiva duplicación?</span></p>
+</div>
+<details class="success"><summary>Solución: Excepción encapsulada</summary><div class="highlight"><pre><span></span><code><span class="n">LocalPort</span> <span class="n">port</span> <span class="o">=</span> <span class="k">new</span> <span class="n">LocalPort</span><span class="p">(</span><span class="mi">12</span><span class="p">);</span>
+<span class="k">try</span> <span class="p">{</span>
+  <span class="n">port</span><span class="p">.</span><span class="na">open</span><span class="p">();</span>
+<span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="n">PortDeviceFailure</span> <span class="n">e</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">reportPortError</span><span class="p">(</span><span class="n">e</span><span class="p">);</span>
+  <span class="n">logger</span><span class="p">.</span><span class="na">log</span><span class="p">(</span><span class="n">e</span><span class="p">.</span><span class="na">getMessage</span><span class="p">(),</span> <span class="n">e</span><span class="p">);</span>
+<span class="p">}</span> <span class="k">finally</span> <span class="p">{</span>
+  <span class="p">...</span>
+<span class="p">}</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">LocalPort</span> <span class="p">{</span>
+  <span class="kd">private</span> <span class="n">ACMEPort</span> <span class="n">innerPort</span><span class="p">;</span>
+  <span class="kd">public</span> <span class="nf">LocalPort</span><span class="p">(</span><span class="kt">int</span> <span class="n">portNumber</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">innerPort</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ACMEPort</span><span class="p">(</span><span class="n">portNumber</span><span class="p">);</span>
+  <span class="p">}</span>
+  <span class="kd">public</span> <span class="kt">void</span> <span class="nf">open</span><span class="p">()</span> <span class="kd">throws</span> <span class="n">PortDeviceFailure</span> <span class="p">{</span>
+    <span class="k">try</span> <span class="p">{</span>
+      <span class="n">innerPort</span><span class="p">.</span><span class="na">open</span><span class="p">();</span>
+    <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="n">DeviceResponseException</span> <span class="n">e</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">throw</span> <span class="k">new</span> <span class="n">PortDeviceFailure</span><span class="p">(</span><span class="n">e</span><span class="p">);</span>
+    <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="n">ATM1212UnlockedException</span> <span class="n">e</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">throw</span> <span class="k">new</span> <span class="n">PortDeviceFailure</span><span class="p">(</span><span class="n">e</span><span class="p">);</span>
+    <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="n">GMXError</span> <span class="n">e</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">throw</span> <span class="k">new</span> <span class="n">PortDeviceFailure</span><span class="p">(</span><span class="n">e</span><span class="p">);</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+  <span class="p">...</span>
+<span class="p">}</span>
+</code></pre></div>
+
+</details>
+<ul>
+<li>La encapsulación de excepciones es recomendable cuando se usa un API de terceros, para minimizar las dependencias con respecto al API elegido.</li>
+<li>También facilitan la implementación de <em>mocks</em> del componente que proporciona el API para construir pruebas.</li>
+</ul>
+<h3 id="las-excepciones-son-excepcionales">Las excepciones son excepcionales<a class="headerlink" href="#las-excepciones-son-excepcionales" title="Permanent link">&para;</a></h3>
+<p><strong>Recomendación de uso</strong>: Usar excepciones para problemas excepcionales (eventos inesperados)</p>
+<div class="admonition example">
+<p class="admonition-title">Excepciones tras la apertura de ficheros</p>
+<p><span style="color:red;">¿Usar excepciones cuando se intenta abrir un fichero para leer y el fichero no existe?</span></p>
+</div>
+<p>Depende de si el fichero debe estar ahí</p>
+<ul>
+<li>Caso en que se debe lanzar una excepción:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span> <span class="kt">void</span> <span class="nf">open_passwd</span><span class="p">()</span> <span class="kd">throws</span> <span class="n">FileNotFoundException</span> <span class="p">{</span>
+  <span class="c1">// This may throw FileNotFoundException...</span>
+  <span class="n">ipstream</span> <span class="o">=</span> <span class="k">new</span> <span class="n">FileInputStream</span><span class="p">(</span><span class="s">&quot;/etc/passwd&quot;</span><span class="p">);</span>
+  <span class="c1">// ...</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<ul>
+<li>Caso en que no se debe lanzar una excepción:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">open_user_file</span><span class="p">(</span><span class="n">String</span> <span class="n">name</span><span class="p">)</span>
+    <span class="kd">throws</span> <span class="n">FileNotFoundException</span> <span class="p">{</span>
+  <span class="n">File</span> <span class="n">f</span> <span class="o">=</span> <span class="k">new</span> <span class="n">File</span><span class="p">(</span><span class="n">name</span><span class="p">);</span>
+  <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">f</span><span class="p">.</span><span class="na">exists</span><span class="p">())</span>
+    <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
+  <span class="n">ipstream</span> <span class="o">=</span> <span class="k">new</span> <span class="n">FileInputStream</span><span class="p">(</span><span class="n">f</span><span class="p">);</span>
+  <span class="k">return</span> <span class="kc">true</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p><a id="null"></a></p>
+<h2 id="uso-de-null">Uso de null<a class="headerlink" href="#uso-de-null" title="Permanent link">&para;</a></h2>
+<p>Obtener un <em>null</em> cuando no se espera puede ser un quebradero de cabeza para el tratamiento de errores</p>
+<h3 id="principio-general-no-devolver-null">Principio general: no devolver null<a class="headerlink" href="#principio-general-no-devolver-null" title="Permanent link">&para;</a></h3>
+<p>Este código puede parecer inofensivo, pero es maligno:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span> <span class="kt">void</span> <span class="nf">registerItem</span><span class="p">(</span><span class="n">Item</span> <span class="n">item</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">item</span> <span class="o">!=</span> <span class="kc">null</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">ItemRegistry</span> <span class="n">registry</span> <span class="o">=</span> <span class="n">peristentStore</span><span class="p">.</span><span class="na">getItemRegistry</span><span class="p">();</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">registry</span> <span class="o">!=</span> <span class="kc">null</span><span class="p">)</span> <span class="p">{</span>
+      <span class="n">Item</span> <span class="n">existing</span> <span class="o">=</span> <span class="n">registry</span><span class="p">.</span><span class="na">getItem</span><span class="p">(</span><span class="n">item</span><span class="p">.</span><span class="na">getID</span><span class="p">());</span>
+      <span class="k">if</span> <span class="p">(</span><span class="n">existing</span><span class="p">.</span><span class="na">getBillingPeriod</span><span class="p">().</span><span class="na">hasRetailOwner</span><span class="p">())</span> <span class="p">{</span>
+        <span class="n">existing</span><span class="p">.</span><span class="na">register</span><span class="p">(</span><span class="n">item</span><span class="p">);</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p>¿Qué pasa si <code>persistentStore</code> es null?</p>
+<ul>
+<li>Peligro de <code>NullPointerException</code></li>
+<li>¿Se nos ha olvidado añadir un <code>if null</code>?</li>
+<li>El problema no es que se haya olvidado uno, sino que hay demasiados</li>
+<li>En su lugar, elevar una excepción o devolver un objeto <em>especial</em></li>
+</ul>
+<h3 id="no-devolver-null">No devolver null<a class="headerlink" href="#no-devolver-null" title="Permanent link">&para;</a></h3>
+<p>Evitar:</p>
+<div class="highlight"><pre><span></span><code><span class="n">List</span><span class="o">&lt;</span><span class="n">Employee</span><span class="o">&gt;</span> <span class="n">employees</span> <span class="o">=</span> <span class="n">getEmployees</span><span class="p">();</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">employees</span> <span class="o">!=</span> <span class="kc">null</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">for</span><span class="p">(</span><span class="n">Employee</span> <span class="n">e</span> <span class="p">:</span> <span class="n">employees</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">totalPay</span> <span class="o">+=</span> <span class="n">e</span><span class="p">.</span><span class="na">getPay</span><span class="p">();</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p>Mejor así:</p>
+<div class="highlight"><pre><span></span><code><span class="n">List</span><span class="o">&lt;</span><span class="n">Employee</span><span class="o">&gt;</span> <span class="n">employees</span> <span class="o">=</span> <span class="n">getEmployees</span><span class="p">();</span>
+<span class="k">for</span><span class="p">(</span><span class="n">Employee</span> <span class="n">e</span> <span class="p">:</span> <span class="n">employees</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">totalPay</span> <span class="o">+=</span> <span class="n">e</span><span class="p">.</span><span class="na">getPay</span><span class="p">();</span>
+<span class="p">}</span>
+
+<span class="kd">public</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">Employee</span><span class="o">&gt;</span> <span class="nf">getEmployees</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">if</span><span class="p">(</span> <span class="cm">/* there are no employees */</span> <span class="p">)</span>
+    <span class="k">return</span> <span class="n">Collections</span><span class="p">.</span><span class="na">emptyList</span><span class="p">();</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<h3 id="no-pasar-valores-null">No pasar valores null<a class="headerlink" href="#no-pasar-valores-null" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">MetricsCalculator</span>
+<span class="p">{</span>
+  <span class="kd">public</span> <span class="kt">double</span> <span class="nf">xProjection</span><span class="p">(</span><span class="n">Point</span> <span class="n">p1</span><span class="p">,</span> <span class="n">Point</span> <span class="n">p2</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="p">(</span><span class="n">p2</span><span class="p">.</span><span class="na">x</span> <span class="o">-</span> <span class="n">p1</span><span class="p">.</span><span class="na">x</span><span class="p">)</span> <span class="o">*</span> <span class="mf">1.5</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p><span style="color:red;">¿Qué sucede si llamamos a <code>xProjection()</code> así...?</span></p>
+<div class="highlight"><pre><span></span><code>  <span class="n">calculator</span><span class="p">.</span><span class="na">xProjection</span><span class="p">(</span><span class="kc">null</span><span class="p">,</span> <span class="k">new</span> <span class="n">Point</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">13</span><span class="p">))</span>
+</code></pre></div>
+
+<p>Devolver null es malo, pero ¡pasar un valor null es peor!</p>
+<p><span style="color:red;">¿Es mejor así...?</span></p>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">MetricsCalculator</span>
+<span class="p">{</span>
+  <span class="kd">public</span> <span class="kt">double</span> <span class="nf">xProjection</span><span class="p">(</span><span class="n">Point</span> <span class="n">p1</span><span class="p">,</span> <span class="n">Point</span> <span class="n">p2</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">p1</span> <span class="o">==</span> <span class="kc">null</span> <span class="o">||</span> <span class="n">p2</span> <span class="o">==</span> <span class="kc">null</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">throw</span> <span class="n">InvalidArgumentException</span><span class="p">(</span>
+               <span class="s">&quot;Invalid argument for MetricsCalculator.xProjection&quot;</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">p2</span><span class="p">.</span><span class="na">x</span> <span class="o">-</span> <span class="n">p1</span><span class="p">.</span><span class="na">x</span><span class="p">)</span> <span class="o">*</span> <span class="mf">1.5</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p>¿Qué curso de acción tomar ante un <code>InvalidArgumentException</code>? ¿Hay alguno?</p>
+<h4 id="alternativa-con-aserciones">Alternativa con aserciones<a class="headerlink" href="#alternativa-con-aserciones" title="Permanent link">&para;</a></h4>
+<div class="admonition tip">
+<p class="admonition-title">Solo para JDK <span><span class="MathJax_Preview">\geq</span><script type="math/tex">\geq</script></span> 5.0</p>
+</div>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">MetricsCalculator</span>
+<span class="p">{</span>
+  <span class="kd">public</span> <span class="kt">double</span> <span class="nf">xProjection</span><span class="p">(</span><span class="n">Point</span> <span class="n">p1</span><span class="p">,</span> <span class="n">Point</span> <span class="n">p2</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">assert</span> <span class="n">p1</span> <span class="o">!=</span> <span class="kc">null</span> <span class="p">:</span> <span class="s">&quot;p1 should not be null&quot;</span><span class="p">;</span>
+    <span class="k">assert</span> <span class="n">p2</span> <span class="o">!=</span> <span class="kc">null</span> <span class="p">:</span> <span class="s">&quot;p2 should not be null&quot;</span><span class="p">;</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">p2</span><span class="p">.</span><span class="na">x</span> <span class="o">-</span> <span class="n">p1</span><span class="p">.</span><span class="na">x</span><span class="p">)</span> <span class="o">*</span> <span class="mf">1.5</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p>El uso de <code>assert</code> es una buena forma de documentar, pero no resuelve el problema.</p>
+<h3 id="optionals">Optionals<a class="headerlink" href="#optionals" title="Permanent link">&para;</a></h3>
+<ul>
+<li>En la mayoría de lenguajes no hay forma satisfactoria de tratar con <em>nulls</em> pasados como argumento accidentalmente.</li>
+<li>Para eso están los <em>options</em> u <em>optionals</em>, disponibles actualmente en muchos lenguajes como:<ul>
+<li><a href="https://www.tutorialspoint.com/scala/scala_options.htm">Scala <code>Option</code></a></li>
+<li><a href="https://docs.oracle.com/javase/8/docs/api/java/util/Optional.html">Java 8</a> <code class="highlight"><span class="n">java</span><span class="p">.</span><span class="na">util</span><span class="p">.</span><span class="na">Optional</span></code></li>
+<li>C++17 <code class="highlight"><span class="n">std</span><span class="o">::</span><span class="n">optional</span></code></li>
+</ul>
+</li>
+<li><a href="https://github.com/Microsoft/TypeScript/wiki/Coding-guidelines#null-and-undefined">TypeScript recomienda usar <code>undefined</code></a> (algo que no se ha inicializado) en lugar de <code>null</code> (algo que no está disponible)</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Lecturas recomendadas</p>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Leer el <a href="https://www.tutorialspoint.com/scala/scala_options.htm">Tutorial de <code class="highlight"><span class="nc">Option</span></code></a> en Scala</li>
+</ul>
+</div>
+<h4 id="scala-option">Scala <code>Option</code><a class="headerlink" href="#scala-option" title="Permanent link">&para;</a></h4>
+<p>En Scala, <code class="highlight"><span class="nc">Option</span><span class="o">[</span><span class="kt">T</span><span class="o">]</span></code> es un contenedor de un valor opcional de tipo T.</p>
+<ul>
+<li>Si el valor de tipo T está presente, <code class="highlight"><span class="nc">Option</span><span class="o">[</span><span class="kt">T</span><span class="o">]</span></code> es una intancia de <code class="highlight"><span class="nc">Some</span><span class="o">[</span><span class="kt">T</span><span class="o">]</span></code> que contiene el valor presente de tipo T.</li>
+<li>Si el valor está ausente, <code class="highlight"><span class="nc">Option</span><span class="o">[</span><span class="kt">T</span><span class="o">]</span></code> es el objeto <code class="highlight"><span class="nc">None</span></code>.</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Valores vacíos en Scala</p>
+<p>Conocer las diferencias entre <a href="https://www.geeksforgeeks.org/scala-null-null-nil-nothing-none-and-unit/"><code>Null</code>, <code>null</code>, <code>Nil</code>, <code>Nothing</code>, <code>None</code> y <code>Unit</code></a> en Scala</p>
+</div>
+<div class="highlight"><pre><span></span><code><span class="k">object</span> <span class="nc">Demo</span> <span class="o">{</span>
+   <span class="k">def</span> <span class="n">main</span><span class="o">(</span><span class="n">args</span><span class="k">:</span> <span class="kt">Array</span><span class="o">[</span><span class="kt">String</span><span class="o">])</span> <span class="o">{</span>
+      <span class="k">val</span> <span class="n">a</span><span class="k">:</span><span class="kt">Option</span><span class="o">[</span><span class="kt">Int</span><span class="o">]</span> <span class="k">=</span> <span class="nc">Some</span><span class="o">(</span><span class="mi">5</span><span class="o">)</span>
+      <span class="k">val</span> <span class="n">b</span><span class="k">:</span><span class="kt">Option</span><span class="o">[</span><span class="kt">Int</span><span class="o">]</span> <span class="k">=</span> <span class="nc">None</span>
+
+      <span class="n">println</span><span class="o">(</span><span class="s">&quot;a.isEmpty: &quot;</span> <span class="o">+</span> <span class="n">a</span><span class="o">.</span><span class="n">isEmpty</span> <span class="o">)</span>  <span class="c1">//false</span>
+      <span class="n">println</span><span class="o">(</span><span class="s">&quot;b.isEmpty: &quot;</span> <span class="o">+</span> <span class="n">b</span><span class="o">.</span><span class="n">isEmpty</span> <span class="o">)</span>  <span class="c1">//true</span>
+   <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="k">object</span> <span class="nc">Demo</span> <span class="o">{</span>
+   <span class="k">def</span> <span class="n">main</span><span class="o">(</span><span class="n">args</span><span class="k">:</span> <span class="kt">Array</span><span class="o">[</span><span class="kt">String</span><span class="o">])</span> <span class="o">{</span>
+      <span class="k">val</span> <span class="n">capitals</span> <span class="k">=</span> <span class="nc">Map</span><span class="o">(</span><span class="s">&quot;France&quot;</span> <span class="o">-&gt;</span> <span class="s">&quot;Paris&quot;</span><span class="o">,</span> <span class="s">&quot;Japan&quot;</span> <span class="o">-&gt;</span> <span class="s">&quot;Tokyo&quot;</span><span class="o">)</span>
+
+      <span class="n">println</span><span class="o">(</span><span class="s">&quot;show(capitals.get( \&quot;Japan\&quot;)) : &quot;</span> <span class="o">+</span> <span class="n">show</span><span class="o">(</span><span class="n">capitals</span><span class="o">.</span><span class="n">get</span><span class="o">(</span> <span class="s">&quot;Japan&quot;</span><span class="o">))</span> <span class="o">)</span>
+      <span class="n">println</span><span class="o">(</span><span class="s">&quot;show(capitals.get( \&quot;India\&quot;)) : &quot;</span> <span class="o">+</span> <span class="n">show</span><span class="o">(</span><span class="n">capitals</span><span class="o">.</span><span class="n">get</span><span class="o">(</span> <span class="s">&quot;India&quot;</span><span class="o">))</span> <span class="o">)</span>
+   <span class="o">}</span>
+
+   <span class="k">def</span> <span class="n">show</span><span class="o">(</span><span class="n">x</span><span class="k">:</span> <span class="kt">Option</span><span class="o">[</span><span class="kt">String</span><span class="o">])</span> <span class="k">=</span> <span class="n">x</span> <span class="k">match</span> <span class="o">{</span>
+      <span class="k">case</span> <span class="nc">Some</span><span class="o">(</span><span class="n">s</span><span class="o">)</span> <span class="k">=&gt;</span> <span class="n">s</span>
+      <span class="k">case</span> <span class="nc">None</span> <span class="k">=&gt;</span> <span class="s">&quot;?&quot;</span>
+   <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div>
+
+<h4 id="java-8-optional">Java 8 <code>Optional</code><a class="headerlink" href="#java-8-optional" title="Permanent link">&para;</a></h4>
+<div class="admonition note">
+<p class="admonition-title">Lecturas recomendadas</p>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Leer <a href="https://www.mkyong.com/java8/java-8-optional-in-depth/">Java 8 Optional in Depth</a>.</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Leer <a href="https://www.adictosaltrabajo.com/2015/03/02/optional-java-8/">Jugando con Optional en Java 8</a>.</li>
+</ul>
+</div>
+<p><strong>Ejemplo en Java 8 con sintaxis imperativa</strong></p>
+<div class="highlight"><pre><span></span><code><span class="kd">private</span> <span class="kd">static</span> <span class="n">Optional</span><span class="o">&lt;</span><span class="n">Double</span><span class="o">&gt;</span> <span class="nf">getDurationOfAlbumWithName</span><span class="p">(</span><span class="n">String</span> <span class="n">name</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">Album</span> <span class="n">album</span><span class="p">;</span>
+    <span class="n">Optional</span><span class="o">&lt;</span><span class="n">Album</span><span class="o">&gt;</span> <span class="n">albumOptional</span> <span class="o">=</span> <span class="n">getAlbum</span><span class="p">(</span><span class="n">name</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">albumOptional</span><span class="p">.</span><span class="na">isPresent</span><span class="p">())</span> <span class="p">{</span> <span class="c1">// equivalente a albumOptional == null</span>
+        <span class="n">album</span> <span class="o">=</span> <span class="n">albumOptional</span><span class="p">.</span><span class="na">get</span><span class="p">();</span>
+        <span class="n">Optional</span><span class="o">&lt;</span><span class="n">List</span><span class="o">&lt;</span><span class="n">Track</span><span class="o">&gt;&gt;</span> <span class="n">tracksOptional</span> <span class="o">=</span> <span class="n">getAlbumTracks</span><span class="p">(</span><span class="n">album</span><span class="p">.</span><span class="na">getName</span><span class="p">());</span>
+        <span class="kt">double</span> <span class="n">duration</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">tracksOptional</span><span class="p">.</span><span class="na">isPresent</span><span class="p">())</span> <span class="p">{</span> <span class="c1">// equivalente a tracksOptional == null</span>
+            <span class="n">List</span><span class="o">&lt;</span><span class="n">Track</span><span class="o">&gt;</span> <span class="n">tracks</span> <span class="o">=</span> <span class="n">tracksOptional</span><span class="p">.</span><span class="na">get</span><span class="p">();</span>
+            <span class="k">for</span> <span class="p">(</span><span class="n">Track</span> <span class="n">track</span> <span class="p">:</span> <span class="n">tracks</span><span class="p">)</span> <span class="p">{</span>
+                <span class="n">duration</span> <span class="o">+=</span> <span class="n">track</span><span class="p">.</span><span class="na">getDuration</span><span class="p">();</span>
+            <span class="p">}</span>
+            <span class="k">return</span> <span class="n">Optional</span><span class="p">.</span><span class="na">of</span><span class="p">(</span><span class="n">duration</span><span class="p">);</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="n">Optional</span><span class="p">.</span><span class="na">empty</span><span class="p">();</span>
+        <span class="p">}</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">Optional</span><span class="p">.</span><span class="na">empty</span><span class="p">();</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p>Al ejecutar varias operaciones seguidas que pueden devolver null, el nivel de anidamiento del código aumenta y queda menos claro (se mezcla código funcional con código de gestión de errores). Solución...</p>
+<p><strong>Ejemplo en Java 8 con sintaxis <em>fluent</em></strong></p>
+<div class="highlight"><pre><span></span><code><span class="n">Optional</span><span class="o">&lt;</span><span class="n">Double</span><span class="o">&gt;</span> <span class="nf">getDurationOfAlbumWithName</span><span class="p">(</span><span class="n">String</span> <span class="n">name</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">Optional</span><span class="o">&lt;</span><span class="n">Double</span><span class="o">&gt;</span> <span class="n">duration</span> <span class="o">=</span> <span class="n">getAlbum</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+            <span class="p">.</span><span class="na">flatMap</span><span class="p">((</span><span class="n">album</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">getAlbumTracks</span><span class="p">(</span><span class="n">album</span><span class="p">.</span><span class="na">getName</span><span class="p">()))</span>
+            <span class="p">.</span><span class="na">map</span><span class="p">((</span><span class="n">tracks</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">getTracksDuration</span><span class="p">(</span><span class="n">tracks</span><span class="p">));</span>
+    <span class="k">return</span> <span class="n">duration</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<ul>
+<li>La función <code>map</code> comprueba si el <code>Optional</code> que recibe está vacío. Si lo está devuelve un <code>Optional</code> vacío y, si no, aplica la función que le hemos pasado por parámetro, pasándole el valor del <code>Optional</code>. Es decir, si el <code>Optional</code> está vacío, el método <code>map</code> no hace nada. Esto sirve para concatenar operaciones sin necesidad de comprobar en cada momento si el <code>Optional</code> está vacío.</li>
+<li>Cuando queremos encadenar distintas operaciones que devuelvan <code>Optional</code>, es necesario usar <code>flatMap</code>, ya que si no acabaríamos teniendo un <code>Optional&lt;Optional&lt;Double&gt;&gt;</code>.</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kd">private</span> <span class="kd">static</span> <span class="kt">double</span> <span class="nf">getDurationOfAlbumWithName</span><span class="p">(</span><span class="n">String</span> <span class="n">name</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">getAlbum</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+            <span class="p">.</span><span class="na">flatMap</span><span class="p">((</span><span class="n">album</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">getAlbumTracks</span><span class="p">(</span><span class="n">album</span><span class="p">.</span><span class="na">getName</span><span class="p">()))</span>
+            <span class="p">.</span><span class="na">map</span><span class="p">((</span><span class="n">tracks</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">getTracksDuration</span><span class="p">(</span><span class="n">tracks</span><span class="p">))</span>
+            <span class="p">.</span><span class="na">orElse</span><span class="p">(</span><span class="mf">0.0</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<ul>
+<li>Podríamos seguir devolviendo <code>Optional</code> por toda la aplicación, pero en algún momento tenemos que decidir qué hacer en caso de que el valor que queremos no estuviera presente. Para ello se usa <code>orElse()</code> para proporcionar un valor alternativo en caso de que el valor no estuviera presente.</li>
+</ul>
+<p><strong>Ejemplo sin <code>Optional</code></strong></p>
+<p>Programa de prueba:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">MobileTesterWithoutOptional</span> <span class="p">{</span>
+  <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">ScreenResolution</span> <span class="n">resolution</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ScreenResolution</span><span class="p">(</span><span class="mi">750</span><span class="p">,</span><span class="mi">1334</span><span class="p">);</span>
+    <span class="n">DisplayFeatures</span> <span class="n">dfeatures</span> <span class="o">=</span> <span class="k">new</span> <span class="n">DisplayFeatures</span><span class="p">(</span><span class="s">&quot;4.7&quot;</span><span class="p">,</span> <span class="n">resolution</span><span class="p">);</span>
+    <span class="n">Mobile</span> <span class="n">mobile</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Mobile</span><span class="p">(</span><span class="mi">2015001</span><span class="p">,</span> <span class="s">&quot;Apple&quot;</span><span class="p">,</span> <span class="s">&quot;iPhone 6s&quot;</span><span class="p">,</span> <span class="n">dfeatures</span><span class="p">);</span>
+
+    <span class="n">MobileService</span> <span class="n">mService</span> <span class="o">=</span> <span class="k">new</span> <span class="n">MobileService</span><span class="p">();</span>
+
+    <span class="kt">int</span> <span class="n">mobileWidth</span> <span class="o">=</span> <span class="n">mService</span><span class="p">.</span><span class="na">getMobileScreenWidth</span><span class="p">(</span><span class="n">mobile</span><span class="p">);</span>
+    <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Apple iPhone 6s Screen Width = &quot;</span> <span class="o">+</span> <span class="n">mobileWidth</span><span class="p">);</span>
+
+    <span class="n">ScreenResolution</span> <span class="n">resolution2</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ScreenResolution</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">);</span>
+    <span class="n">DisplayFeatures</span> <span class="n">dfeatures2</span> <span class="o">=</span> <span class="k">new</span> <span class="n">DisplayFeatures</span><span class="p">(</span><span class="s">&quot;0&quot;</span><span class="p">,</span> <span class="n">resolution2</span><span class="p">);</span>
+    <span class="n">Mobile</span> <span class="n">mobile2</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Mobile</span><span class="p">(</span><span class="mi">2015001</span><span class="p">,</span> <span class="s">&quot;Apple&quot;</span><span class="p">,</span> <span class="s">&quot;iPhone 6s&quot;</span><span class="p">,</span> <span class="n">dfeatures2</span><span class="p">);</span>
+    <span class="kt">int</span> <span class="n">mobileWidth2</span> <span class="o">=</span> <span class="n">mService</span><span class="p">.</span><span class="na">getMobileScreenWidth</span><span class="p">(</span><span class="n">mobile2</span><span class="p">);</span>
+    <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Apple iPhone 16s Screen Width = &quot;</span> <span class="o">+</span> <span class="n">mobileWidth2</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p>Dependencias: <code>MobileService</code> <span><span class="MathJax_Preview">\dashrightarrow</span><script type="math/tex">\dashrightarrow</script></span> <code>DisplayFeatures</code>, <code>ScreenResolution</code></p>
+<p>Cantidad de código <em>boilerplate</em> para comprobar los nulos en la clase principal:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">MobileService</span> <span class="p">{</span>
+  <span class="kd">public</span> <span class="kt">int</span> <span class="nf">getMobileScreenWidth</span><span class="p">(</span><span class="n">Mobile</span> <span class="n">mobile</span><span class="p">){</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">mobile</span> <span class="o">!=</span> <span class="kc">null</span><span class="p">){</span>
+      <span class="n">DisplayFeatures</span> <span class="n">dfeatures</span> <span class="o">=</span> <span class="n">mobile</span><span class="p">.</span><span class="na">getDisplayFeatures</span><span class="p">();</span>
+      <span class="k">if</span><span class="p">(</span><span class="n">dfeatures</span> <span class="o">!=</span> <span class="kc">null</span><span class="p">){</span>
+        <span class="n">ScreenResolution</span> <span class="n">resolution</span> <span class="o">=</span> <span class="n">dfeatures</span><span class="p">.</span><span class="na">getResolution</span><span class="p">();</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">resolution</span> <span class="o">!=</span> <span class="kc">null</span><span class="p">){</span>
+          <span class="k">return</span> <span class="n">resolution</span><span class="p">.</span><span class="na">getWidth</span><span class="p">();</span>
+        <span class="p">}</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p>Clases de utilidad:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">ScreenResolution</span> <span class="p">{</span>
+  <span class="kd">private</span> <span class="kt">int</span> <span class="n">width</span><span class="p">;</span>
+  <span class="kd">private</span> <span class="kt">int</span> <span class="n">height</span><span class="p">;</span>
+
+  <span class="kd">public</span> <span class="nf">ScreenResolution</span><span class="p">(</span><span class="kt">int</span> <span class="n">width</span><span class="p">,</span> <span class="kt">int</span> <span class="n">height</span><span class="p">){</span>
+    <span class="k">this</span><span class="p">.</span><span class="na">width</span> <span class="o">=</span> <span class="n">width</span><span class="p">;</span>
+    <span class="k">this</span><span class="p">.</span><span class="na">height</span> <span class="o">=</span> <span class="n">height</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="kd">public</span> <span class="kt">int</span> <span class="nf">getWidth</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">width</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="kd">public</span> <span class="kt">int</span> <span class="nf">getHeight</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">height</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">DisplayFeatures</span> <span class="p">{</span>
+  <span class="kd">private</span> <span class="n">String</span> <span class="n">size</span><span class="p">;</span> <span class="c1">// In inches</span>
+  <span class="kd">private</span> <span class="n">ScreenResolution</span> <span class="n">resolution</span><span class="p">;</span>
+
+  <span class="kd">public</span> <span class="nf">DisplayFeatures</span><span class="p">(</span><span class="n">String</span> <span class="n">size</span><span class="p">,</span> <span class="n">ScreenResolution</span> <span class="n">resolution</span><span class="p">){</span>
+    <span class="k">this</span><span class="p">.</span><span class="na">size</span> <span class="o">=</span> <span class="n">size</span><span class="p">;</span>
+    <span class="k">this</span><span class="p">.</span><span class="na">resolution</span> <span class="o">=</span> <span class="n">resolution</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="kd">public</span> <span class="n">String</span> <span class="nf">getSize</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">size</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="kd">public</span> <span class="n">ScreenResolution</span> <span class="nf">getResolution</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">resolution</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Mobile</span> <span class="p">{</span>
+  <span class="kd">private</span> <span class="kt">long</span> <span class="n">id</span><span class="p">;</span>
+  <span class="kd">private</span> <span class="n">String</span> <span class="n">brand</span><span class="p">;</span>
+  <span class="kd">private</span> <span class="n">String</span> <span class="n">name</span><span class="p">;</span>
+  <span class="kd">private</span> <span class="n">DisplayFeatures</span> <span class="n">displayFeatures</span><span class="p">;</span>
+  <span class="c1">// Likewise we can see Memory Features, Camera Features etc.</span>
+
+  <span class="kd">public</span> <span class="nf">Mobile</span><span class="p">(</span><span class="kt">long</span> <span class="n">id</span><span class="p">,</span> <span class="n">String</span> <span class="n">brand</span><span class="p">,</span> <span class="n">String</span> <span class="n">name</span><span class="p">,</span> <span class="n">DisplayFeatures</span> <span class="n">displayFeatures</span><span class="p">){</span>
+    <span class="k">this</span><span class="p">.</span><span class="na">id</span> <span class="o">=</span> <span class="n">id</span><span class="p">;</span>
+    <span class="k">this</span><span class="p">.</span><span class="na">brand</span> <span class="o">=</span> <span class="n">brand</span><span class="p">;</span>
+    <span class="k">this</span><span class="p">.</span><span class="na">name</span> <span class="o">=</span> <span class="n">name</span><span class="p">;</span>
+    <span class="k">this</span><span class="p">.</span><span class="na">displayFeatures</span> <span class="o">=</span> <span class="n">displayFeatures</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="kd">public</span> <span class="kt">long</span> <span class="nf">getId</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">id</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="kd">public</span> <span class="n">String</span> <span class="nf">getBrand</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">brand</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="kd">public</span> <span class="n">String</span> <span class="nf">getName</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">name</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="kd">public</span> <span class="n">DisplayFeatures</span> <span class="nf">getDisplayFeatures</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">displayFeatures</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p><strong>Ejemplo con <code>Optionals</code></strong></p>
+<p>Uso de métodos de <code>Optional</code> en el programa de prueba:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">MobileTesterWithOptional</span> <span class="p">{</span>
+  <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">ScreenResolution</span> <span class="n">resolution</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ScreenResolution</span><span class="p">(</span><span class="mi">750</span><span class="p">,</span><span class="mi">1334</span><span class="p">);</span>
+    <span class="n">DisplayFeatures</span> <span class="n">dfeatures</span> <span class="o">=</span> <span class="k">new</span> <span class="n">DisplayFeatures</span><span class="p">(</span><span class="s">&quot;4.7&quot;</span><span class="p">,</span> <span class="n">Optional</span><span class="p">.</span><span class="na">of</span><span class="p">(</span><span class="n">resolution</span><span class="p">));</span>
+    <span class="n">Mobile</span> <span class="n">mobile</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Mobile</span><span class="p">(</span><span class="mi">2015001</span><span class="p">,</span> <span class="s">&quot;Apple&quot;</span><span class="p">,</span> <span class="s">&quot;iPhone 6s&quot;</span><span class="p">,</span> <span class="n">Optional</span><span class="p">.</span><span class="na">of</span><span class="p">(</span><span class="n">dfeatures</span><span class="p">));</span>
+
+    <span class="n">MobileService</span> <span class="n">mService</span> <span class="o">=</span> <span class="k">new</span> <span class="n">MobileService</span><span class="p">();</span>
+
+    <span class="kt">int</span> <span class="n">width</span> <span class="o">=</span> <span class="n">mService</span><span class="p">.</span><span class="na">getMobileScreenWidth</span><span class="p">(</span><span class="n">Optional</span><span class="p">.</span><span class="na">of</span><span class="p">(</span><span class="n">mobile</span><span class="p">));</span>
+    <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Apple iPhone 6s Screen Width = &quot;</span> <span class="o">+</span> <span class="n">width</span><span class="p">);</span>
+
+    <span class="n">Mobile</span> <span class="n">mobile2</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Mobile</span><span class="p">(</span><span class="mi">2015001</span><span class="p">,</span> <span class="s">&quot;Apple&quot;</span><span class="p">,</span> <span class="s">&quot;iPhone 6s&quot;</span><span class="p">,</span> <span class="n">Optional</span><span class="p">.</span><span class="na">empty</span><span class="p">());</span>
+    <span class="kt">int</span> <span class="n">width2</span> <span class="o">=</span> <span class="n">mService</span><span class="p">.</span><span class="na">getMobileScreenWidth</span><span class="p">(</span><span class="n">Optional</span><span class="p">.</span><span class="na">of</span><span class="p">(</span><span class="n">mobile2</span><span class="p">));</span>
+    <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Apple iPhone 16s Screen Width = &quot;</span> <span class="o">+</span> <span class="n">width2</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p>Menos código <em>boilerplate</em> en la clase principal:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">MobileService</span> <span class="p">{</span>
+  <span class="kd">public</span> <span class="n">Integer</span> <span class="nf">getMobileScreenWidth</span><span class="p">(</span><span class="n">Optional</span><span class="o">&lt;</span><span class="n">Mobile</span><span class="o">&gt;</span> <span class="n">mobile</span><span class="p">){</span>
+    <span class="k">return</span> <span class="n">mobile</span><span class="p">.</span><span class="na">flatMap</span><span class="p">(</span><span class="n">Mobile</span><span class="p">::</span><span class="n">getDisplayFeatures</span><span class="p">)</span>
+      <span class="p">.</span><span class="na">flatMap</span><span class="p">(</span><span class="n">DisplayFeatures</span><span class="p">::</span><span class="n">getResolution</span><span class="p">)</span>
+      <span class="p">.</span><span class="na">map</span><span class="p">(</span><span class="n">ScreenResolution</span><span class="p">::</span><span class="n">getWidth</span><span class="p">)</span>
+      <span class="p">.</span><span class="na">orElse</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p>Clases de utilidad:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">java.util.Optional</span><span class="p">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">DisplayFeatures</span> <span class="p">{</span>
+  <span class="kd">private</span> <span class="n">String</span> <span class="n">size</span><span class="p">;</span> <span class="c1">// In inches</span>
+  <span class="kd">private</span> <span class="n">Optional</span><span class="o">&lt;</span><span class="n">ScreenResolution</span><span class="o">&gt;</span> <span class="n">resolution</span><span class="p">;</span>
+  <span class="kd">public</span> <span class="nf">DisplayFeatures</span><span class="p">(</span><span class="n">String</span> <span class="n">size</span><span class="p">,</span> <span class="n">Optional</span><span class="o">&lt;</span><span class="n">ScreenResolution</span><span class="o">&gt;</span> <span class="n">resolution</span><span class="p">){</span>
+    <span class="k">this</span><span class="p">.</span><span class="na">size</span> <span class="o">=</span> <span class="n">size</span><span class="p">;</span>
+    <span class="k">this</span><span class="p">.</span><span class="na">resolution</span> <span class="o">=</span> <span class="n">resolution</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="kd">public</span> <span class="n">String</span> <span class="nf">getSize</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">size</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="kd">public</span> <span class="n">Optional</span><span class="o">&lt;</span><span class="n">ScreenResolution</span><span class="o">&gt;</span> <span class="nf">getResolution</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">resolution</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Mobile</span> <span class="p">{</span>
+  <span class="kd">private</span> <span class="kt">long</span> <span class="n">id</span><span class="p">;</span>
+  <span class="kd">private</span> <span class="n">String</span> <span class="n">brand</span><span class="p">;</span>
+  <span class="kd">private</span> <span class="n">String</span> <span class="n">name</span><span class="p">;</span>
+  <span class="kd">private</span> <span class="n">Optional</span><span class="o">&lt;</span><span class="n">DisplayFeatures</span><span class="o">&gt;</span> <span class="n">displayFeatures</span><span class="p">;</span>
+  <span class="c1">// Like wise we can see MemoryFeatures, CameraFeatures etc.</span>
+  <span class="c1">// For simplicity, using only one Features</span>
+  <span class="kd">public</span> <span class="nf">Mobile</span><span class="p">(</span><span class="kt">long</span> <span class="n">id</span><span class="p">,</span> <span class="n">String</span> <span class="n">brand</span><span class="p">,</span> <span class="n">String</span> <span class="n">name</span><span class="p">,</span> <span class="n">Optional</span><span class="o">&lt;</span><span class="n">DisplayFeatures</span><span class="o">&gt;</span> <span class="n">displayFeatures</span><span class="p">){</span>
+    <span class="k">this</span><span class="p">.</span><span class="na">id</span> <span class="o">=</span> <span class="n">id</span><span class="p">;</span>
+    <span class="k">this</span><span class="p">.</span><span class="na">brand</span> <span class="o">=</span> <span class="n">brand</span><span class="p">;</span>
+    <span class="k">this</span><span class="p">.</span><span class="na">name</span> <span class="o">=</span> <span class="n">name</span><span class="p">;</span>
+    <span class="k">this</span><span class="p">.</span><span class="na">displayFeatures</span> <span class="o">=</span> <span class="n">displayFeatures</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="kd">public</span> <span class="kt">long</span> <span class="nf">getId</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">id</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="kd">public</span> <span class="n">String</span> <span class="nf">getBrand</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">brand</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="kd">public</span> <span class="n">String</span> <span class="nf">getName</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">name</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="kd">public</span> <span class="n">Optional</span><span class="o">&lt;</span><span class="n">DisplayFeatures</span><span class="o">&gt;</span> <span class="nf">getDisplayFeatures</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">displayFeatures</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<h4 id="carencias-de-optional">Carencias de Optional<a class="headerlink" href="#carencias-de-optional" title="Permanent link">&para;</a></h4>
+<ul>
+<li>El tratamiento de errores clásico del lenguaje C (con el que empezábamos este capítulo) se basa en devolver un valor especial que contiene un <em>código de error</em> (normalmente negativo) que indica qué ha salido mal. Se podrían representar tantos motivos de error como posibles valores devueltos.</li>
+<li>Los <code>Optional</code> no ofrecen la posibilidad de que decir qué es lo que ha salido mal (en caso de que no haya valor a devolver).</li>
+<li>Por tanto, no son apropiados para métodos en los que pueden salir varias cosas mal y no solo una (que no exista un valor a devolver)</li>
+<li>Lenguajes como Scala proponen alternativas como <code>Either</code> y <code>Validation</code>.</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="k">object</span> <span class="nc">EitherLeftRightExample</span> <span class="k">extends</span> <span class="nc">App</span> <span class="o">{</span>
+
+  <span class="cm">/**</span>
+<span class="cm">   * A method to demonstrate how to declare that a method returns an Either,</span>
+<span class="cm">   * and code that returns a Left or Right.</span>
+<span class="cm">   */</span>
+  <span class="k">def</span> <span class="n">divideXByY</span><span class="o">(</span><span class="n">x</span><span class="k">:</span> <span class="kt">Int</span><span class="o">,</span> <span class="n">y</span><span class="k">:</span> <span class="kt">Int</span><span class="o">)</span><span class="k">:</span> <span class="kt">Either</span><span class="o">[</span><span class="kt">String</span><span class="p">,</span> <span class="kt">Int</span><span class="o">]</span> <span class="k">=</span> <span class="o">{</span>
+      <span class="k">if</span> <span class="o">(</span><span class="n">y</span> <span class="o">==</span> <span class="mi">0</span><span class="o">)</span> <span class="nc">Left</span><span class="o">(</span><span class="s">&quot;Dude, can&#39;t divide by 0&quot;</span><span class="o">)</span>
+      <span class="k">else</span> <span class="nc">Right</span><span class="o">(</span><span class="n">x</span> <span class="o">/</span> <span class="n">y</span><span class="o">)</span>
+  <span class="o">}</span>
+
+  <span class="c1">// a few different ways to use Either, Left, and Right</span>
+  <span class="n">println</span><span class="o">(</span><span class="n">divideXByY</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="mi">0</span><span class="o">))</span>
+  <span class="n">println</span><span class="o">(</span><span class="n">divideXByY</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="mi">1</span><span class="o">))</span>
+  <span class="n">divideXByY</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="mi">0</span><span class="o">)</span> <span class="k">match</span> <span class="o">{</span>
+      <span class="k">case</span> <span class="nc">Left</span><span class="o">(</span><span class="n">s</span><span class="o">)</span> <span class="k">=&gt;</span> <span class="n">println</span><span class="o">(</span><span class="s">&quot;Answer: &quot;</span> <span class="o">+</span> <span class="n">s</span><span class="o">)</span>
+      <span class="k">case</span> <span class="nc">Right</span><span class="o">(</span><span class="n">i</span><span class="o">)</span> <span class="k">=&gt;</span> <span class="n">println</span><span class="o">(</span><span class="s">&quot;Answer: &quot;</span> <span class="o">+</span> <span class="n">i</span><span class="o">)</span>
+  <span class="o">}</span>
+
+<span class="o">}</span>
+</code></pre></div>
+                
+                  
+                
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+          <a href="../iiss-oop-4/" title="Duplicación" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                Duplicación
+              </span>
+            </div>
+          </a>
+        
+        
+          <a href="../iiss-aop/" title="II. Aspectos" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                II. Aspectos
+              </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        powered by
+        <a href="https://www.mkdocs.org" target="_blank" rel="noopener">MkDocs</a>
+        and
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs</a>
+      </div>
+      
+  <div class="md-footer-social">
+    <link rel="stylesheet" href="../assets/fonts/font-awesome.css">
+    
+      <a href="https://github.com/dodero" target="_blank" rel="noopener" title="" class="md-footer-social__link fa fa-"></a>
+    
+  </div>
+
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../assets/javascripts/application.c33a9706.js"></script>
+      
+      <script>app.initialize({version:"1.1",url:{base:".."}})</script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+      
+    
+  </body>
+</html>
