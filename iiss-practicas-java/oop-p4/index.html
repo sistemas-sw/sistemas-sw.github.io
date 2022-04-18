@@ -424,8 +424,8 @@
                   </a>
                 
                 
-                <h0 id="practica-4-aserciones-uso-de-null-optional">Práctica 4: Aserciones &amp; Uso de Null &amp; Optional<a class="headerlink" href="#practica-4-aserciones-uso-de-null-optional" title="Permanent link">&para;</a></h0>
-<h1 id="repaso-de-conceptos-teoricos"><span style="color:blue">Repaso de conceptos teóricos</span><a class="headerlink" href="#repaso-de-conceptos-teoricos" title="Permanent link">&para;</a></h1>
+                <h0 id="practica-4-tratamiento-de-errores">Práctica 4: Tratamiento de errores<a class="headerlink" href="#practica-4-tratamiento-de-errores" title="Permanent link">&para;</a></h0>
+<h1 id="repaso-de-conceptos-teoricos">Repaso de conceptos teóricos<a class="headerlink" href="#repaso-de-conceptos-teoricos" title="Permanent link">&para;</a></h1>
 <h1 id="aserciones">Aserciones<a class="headerlink" href="#aserciones" title="Permanent link">&para;</a></h1>
 <p>Las aserciones son un método para aumentar la fiabilidad del código que se esta implementando. Las aserciones son expresiones que representan una condición que debe cumplirse en una parte específica del código. Si una aserción no se cumple, el programa generará un error en ese punto.</p>
 <blockquote>
@@ -438,39 +438,25 @@
 <div class="highlight"><pre><span></span><code><span class="k">assert</span> <span class="n">price</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">;</span>
 </code></pre></div>
 <p>En este caso, la aserción comprueba que el valor del atributo <em>price</em> debe ser siempre mayor que 0, en el caso de que el valor sea 0 o inferior la aserción no se cumplirá. Esto permite comprobar que el programa esta realizando un funcionamiento correcto en este sentido.</p>
-<p>Como se ha comentado anteriormente, si la condición que sigue al keyword <em>assert</em> no se cumple el programa lanzará una excepción de tipo "AssertionError". Para que el mensaje de error asociado sea más descriptivo se puede especificar su contenido como se muestra a continuación:</p>
+<p>Si la condición que sigue al keyword <em>assert</em> no se cumple el programa lanzará una excepción de tipo "AssertionError". Para que el mensaje de error asociado sea más descriptivo se puede especificar su contenido como se muestra a continuación:</p>
 <div class="highlight"><pre><span></span><code><span class="k">assert</span> <span class="n">price</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="p">:</span> <span class="s">&quot;El precio es menor que 0.&quot;</span><span class="p">;</span>
 </code></pre></div>
 <p>Estas excepciones pueden ser capturadas, o en caso contrario el intérprete de Java se encargará de ellas y mostrará la excepción por consola. A continuación, se muestra un ejemplo del error generado cuando una aserción no se cumple:</p>
-<p><div class="highlight"><pre><span></span><code><span class="n">Exception</span> <span class="n">in</span> <span class="n">thread</span> <span class="err">“</span><span class="n">main</span><span class="err">”</span> <span class="n">java</span><span class="p">.</span><span class="na">lang</span><span class="p">.</span><span class="na">AssertionError</span>
-<span class="n">at</span> <span class="n">AssertTest</span><span class="p">.</span><span class="na">main</span><span class="p">(</span><span class="n">AssertTest</span><span class="p">.</span><span class="na">java</span><span class="p">:</span><span class="mi">14</span><span class="p">)</span>
+<p><div class="highlight"><pre><span></span><code>Exception in thread “main” java.lang.AssertionError
+at AssertTest.main(AssertTest.java:14)
 </code></pre></div>
 En el ejemplo anterior se muestra un error generado donde no se ha especificado ningún mensaje para que sea más descriptivo. A continuación, se muestra un error donde se ha especificado el mensaje:</p>
-<div class="highlight"><pre><span></span><code><span class="n">Exception</span> <span class="n">in</span> <span class="n">thread</span> <span class="err">“</span><span class="n">main</span><span class="err">”</span> <span class="n">java</span><span class="p">.</span><span class="na">lang</span><span class="p">.</span><span class="na">AssertionError</span><span class="p">:</span> <span class="n">El</span> <span class="n">precio</span> <span class="n">es</span> <span class="n">menor</span> <span class="n">que</span> <span class="mf">0.</span>
-<span class="n">at</span> <span class="n">AssertTest</span><span class="p">.</span><span class="na">main</span><span class="p">(</span><span class="n">AssertTest</span><span class="p">.</span><span class="na">java</span><span class="p">:</span><span class="mi">14</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code>Exception in thread “main” java.lang.AssertionError: El precio es menor que 0.
+at AssertTest.main(AssertTest.java:14)
 </code></pre></div>
 <p>Como se puede comprobar, la incorporación de mensajes aclaratorios es una buena práctica, ya que en el primer caso es díficil conocer el motivo de error del programa, a no ser que se visualice el contenido de la línea 14 del fichero "AssertTest.java".</p>
-<h1 id="configuracion-de-eclipse-para-usar-aserciones">Configuración de Eclipse para usar aserciones<a class="headerlink" href="#configuracion-de-eclipse-para-usar-aserciones" title="Permanent link">&para;</a></h1>
-<p>Aunque las aserciones sean parte oficial del lenguaje Java, se debe configurar la ejecución del programa para que se muestren los errores asociados a éstas.</p>
-<p>En Eclipse se puede realizar esta opción haciendo click derecho sobre el proyecto: "Run as" &gt; "Run configurations" &gt; Click derecho sobre "Java application" &gt; "New Configuration". A continuación, se abrirá la siguiente ventana de configuración:</p>
-<blockquote>
-<p><img alt="RunConfigurations1" src="../figuras/asserts_RunConfigurations_1.png" /></p>
-<p><small><cite>Configuración de la clase principal del proyecto (main).</cite></small></p>
-</blockquote>
-<p>En primer lugar, en la pestaña "Main se debe seleccionar la clase principal del proyecto, la cual será la clase que contenga el función "main", tal y como se muestra en la figura anterior.</p>
-<blockquote>
-<p><img alt="RunConfigurations2" src="../figuras/asserts_RunConfigurations_2.png" /></p>
-<p><small><cite>Incorporación de argumentos en la ejecución para permitir usar aserciones.</cite></small></p>
-</blockquote>
-<p>Posteriormente, en la pestaña "Arguments" se deben añadir las opciones "-ea" en "VM arguments", las cuales habilitarán el procesamiento de las aserciones en el proyecto.</p>
-<p>Finalmente, hacer click en el botón "Run" y el programa se ejecutará mostrando los errores existentes en las aserciones en el caso de que existan.</p>
-<h1 id="uso-de-null-optional">Uso de Null &amp; Optional<a class="headerlink" href="#uso-de-null-optional" title="Permanent link">&para;</a></h1>
-<p>En <a href="https://leanmind.es/es/blog/evitar-null-tambien-en-kotlin/">[3]</a> se describe algunas de las consecuencias del uso del valor <em>null</em> y los mecanismos que pueden ser utilizados para evitar su uso. En Java 8 se incorpora la clase "Optional", la cual puede ser utilizada también para evitar su uso.</p>
+<h1 id="abuso-de-null-optional">Abuso de null &amp; Optional<a class="headerlink" href="#abuso-de-null-optional" title="Permanent link">&para;</a></h1>
+<p>En <a href="https://leanmind.es/es/blog/evitar-null-tambien-en-kotlin/">[3]</a> se describe algunas de las consecuencias del abuso del valor <code>null</code> y los mecanismos que pueden ser utilizados para evitar su uso. En Java 8 se incorpora la clase <code>Optional</code>, que puede usarse para evitar su abuso.</p>
 <blockquote>
 <p>Optional is a container object used to contain not-null objects. Optional object is used to represent null with absent value. This class has various utility methods to facilitate code to handle values as ‘available’ or ‘not available’ instead of checking null values. It is introduced in Java 8 and is similar to what Optional is in Guava.
 -- <cite><a href="https://www.tutorialspoint.com/java8/java8_optional_class.htm">TutorialsPoint.com</a></cite></p>
 </blockquote>
-<p>A continuación, en el siguiente fragmento de código se muestra un ejemplo de uso indebido del valor <em>null</em>:</p>
+<p>A continuación, en el siguiente fragmento de código se muestra un ejemplo de uso indebido del valor <code>null</code>:</p>
 <p><div class="highlight"><pre><span></span><code><span class="n">Album</span> <span class="n">album</span> <span class="o">=</span> <span class="n">getAlbum</span><span class="p">(</span><span class="s">&quot;Random Memory Access&quot;</span><span class="p">);</span>
 <span class="k">if</span><span class="p">(</span><span class="n">album</span> <span class="o">!=</span> <span class="kc">null</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">return</span> <span class="n">album</span><span class="p">;</span>
@@ -478,7 +464,7 @@ En el ejemplo anterior se muestra un error generado donde no se ha especificado 
     <span class="c1">// Avisar al usuario de que no se ha encontrado el album</span>
 <span class="p">}</span>
 </code></pre></div>
-Por otro lado, en el siguiente fragmento de código se realiza el uso de la clase "Optional". En este caso, se evita la comparación de la variable "album" con el valor <em>null</em>, y se utiliza el método "isPresent" en su lugar.</p>
+En el siguiente fragmento de código se usa la clase <code>Optional</code>. En este caso, se evita la comparación de la variable <code>album</code> con el valor <code>null</code>, y se utiliza el método <code>isPresent</code> en su lugar.</p>
 <div class="highlight"><pre><span></span><code><span class="n">Optional</span><span class="o">&lt;</span><span class="n">Album</span><span class="o">&gt;</span> <span class="n">albumOptional</span> <span class="o">=</span> <span class="n">getAlbum</span><span class="p">(</span><span class="s">&quot;Random Memory Access&quot;</span><span class="p">);</span>
 <span class="k">if</span><span class="p">(</span><span class="n">albumOptional</span><span class="p">.</span><span class="na">isPresent</span><span class="p">())</span> <span class="p">{</span>
     <span class="k">return</span> <span class="n">albumOptional</span><span class="p">.</span><span class="na">get</span><span class="p">();</span>
@@ -486,10 +472,10 @@ Por otro lado, en el siguiente fragmento de código se realiza el uso de la clas
     <span class="c1">// Avisar al usuario de que no se ha encontrado el album</span>
 <span class="p">}</span>
 </code></pre></div>
-<h1 id="ejercicios-propuestos"><span style="color:blue">Ejercicios propuestos</span><a class="headerlink" href="#ejercicios-propuestos" title="Permanent link">&para;</a></h1>
+<h1 id="ejercicios-propuestos">Ejercicios propuestos<a class="headerlink" href="#ejercicios-propuestos" title="Permanent link">&para;</a></h1>
 <h2 id="ejercicio-1">Ejercicio 1<a class="headerlink" href="#ejercicio-1" title="Permanent link">&para;</a></h2>
-<p>Dado los siguientes fragmentos de código responder a las siguientes preguntas:</p>
-<h3 id="productjava">Product.java<a class="headerlink" href="#productjava" title="Permanent link">&para;</a></h3>
+<p>Dado los siguientes fragmentos de código, responder a las siguientes preguntas:</p>
+<h3 id="productjava"><code>Product.java</code><a class="headerlink" href="#productjava" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Product</span> <span class="p">{</span>
 
     <span class="kd">private</span> <span class="kt">int</span> <span class="n">code</span><span class="p">;</span>
@@ -556,7 +542,7 @@ Por otro lado, en el siguiente fragmento de código se realiza el uso de la clas
     <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<h2 id="shoppingcartjava">ShoppingCart.java<a class="headerlink" href="#shoppingcartjava" title="Permanent link">&para;</a></h2>
+<h2 id="shoppingcartjava"><code>ShoppingCart.java</code><a class="headerlink" href="#shoppingcartjava" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">java.util.HashMap</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nn">java.util.Map</span><span class="p">;</span>
 
@@ -594,7 +580,7 @@ Por otro lado, en el siguiente fragmento de código se realiza el uso de la clas
     <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<h2 id="mainjava">Main.java<a class="headerlink" href="#mainjava" title="Permanent link">&para;</a></h2>
+<h2 id="mainjava"><code>Main.java</code><a class="headerlink" href="#mainjava" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Main</span> <span class="p">{</span>
 
     <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span> <span class="n">args</span><span class="o">[]</span><span class="p">)</span> <span class="p">{</span>
@@ -624,33 +610,23 @@ Por otro lado, en el siguiente fragmento de código se realiza el uso de la clas
 <span class="p">}</span>
 </code></pre></div>
 <h3 id="preguntas-propuestas">Preguntas propuestas<a class="headerlink" href="#preguntas-propuestas" title="Permanent link">&para;</a></h3>
-<p>Complete en las clases "Product.java" y "ShoppingCart.java" añadiendo aserciones donde sea necesario que permitan que se cumplan las siguientes condiciones:</p>
-<p>a) En la clase "Product.java":</p>
+<p>Completar las clases <code>Product.java</code> y <code>ShoppingCart.java</code> añadiendo aserciones donde sea necesario que permitan que se cumplan las siguientes condiciones:</p>
+<p>a) En la clase <code>Product.java</code>:</p>
 <ul>
-<li>
-<p>El valor del atributo <em>code</em> no puede ser un número negativo.</p>
-</li>
-<li>
-<p>El valor del atributo <em>name</em> no puede estar vacío.</p>
-</li>
-<li>
-<p>El valor del atributo <em>category</em> no puede estar vacío.</p>
-</li>
-<li>
-<p>El valor del atributo <em>weight</em> no puede ser un número negativo.</p>
-</li>
-<li>
-<p>El valor del atributo <em>height</em> no puede ser un número negativo.</p>
-</li>
+<li>El valor del atributo <code>code</code> no puede ser un número negativo.</li>
+<li>El valor del atributo <code>name</code> no puede estar vacío.</li>
+<li>El valor del atributo <code>category</code> no puede estar vacío.</li>
+<li>El valor del atributo <code>weight</code> no puede ser un número negativo.</li>
+<li>El valor del atributo <code>height</code> no puede ser un número negativo.</li>
 </ul>
-<p>Además, añada un mensaje de error descriptivo en cada una de las aserciones que haya implementado.</p>
-<p>b) En la clase "ShoppingCart.java":</p>
+<p>Además, añadir un mensaje de error descriptivo en cada una de las aserciones que se hayan implementado.</p>
+<p>b) En la clase <code>ShoppingCart.java</code>:</p>
 <ul>
 <li>No se puede añadir un producto con un número de unidades negativo o nulo.</li>
 <li>No se puede eliminar un producto que no existe en el carrito.</li>
 </ul>
 <h2 id="ejercicio-2">Ejercicio 2<a class="headerlink" href="#ejercicio-2" title="Permanent link">&para;</a></h2>
-<p>Dado el código del primer ejercicio, ¿existe algún uso indebido del valor <em>null</em>?. En caso afirmativo, reemplace su uso por el de la clase "Optional" en los casos en los que sea necesario.</p>
+<p>Dado el código del primer ejercicio, ¿existe algún uso indebido del valor <code>null</code>?. En caso afirmativo, reemplazar su uso por el de la clase <code>Optional</code> en los casos en los que sea necesario.</p>
 <h1 id="referencias">Referencias<a class="headerlink" href="#referencias" title="Permanent link">&para;</a></h1>
 <p><a href="https://docs.oracle.com/javase/8/docs/technotes/guides/language/assert.html">[1] Java documentación oficial.</a></p>
 <p><a href="https://cdn.ttgtmedia.com/searchDomino/downloads/CH07_0672326280.pdf">[2] Capítulo de libro Threads, Exceptions, and Assertions (java21days.com)</a></p>
