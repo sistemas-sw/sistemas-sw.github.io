@@ -425,25 +425,33 @@
                 
                 
                 <h0 id="practica-3-streams">Práctica 3: Streams<a class="headerlink" href="#practica-3-streams" title="Permanent link">&para;</a></h0>
-<h1 id="repaso-de-conceptos-teoricos"><span style="color:blue">Repaso de conceptos teóricos</span><a class="headerlink" href="#repaso-de-conceptos-teoricos" title="Permanent link">&para;</a></h1>
+<h1 id="repaso-de-conceptos-teoricos">Repaso de conceptos teóricos<a class="headerlink" href="#repaso-de-conceptos-teoricos" title="Permanent link">&para;</a></h1>
 <h1 id="stream-api-en-java">Stream API en Java<a class="headerlink" href="#stream-api-en-java" title="Permanent link">&para;</a></h1>
 <h2 id="definicion-de-stream-procedente-de-practicas-anteriores">Definición de Stream procedente de prácticas anteriores<a class="headerlink" href="#definicion-de-stream-procedente-de-practicas-anteriores" title="Permanent link">&para;</a></h2>
 <p>Un <em>stream</em> representa una secuencia de elementos que soportan diferentes tipos de operaciones para realizar cálculos sobre ellos.</p>
-<p>Las posibles operaciones que se pueden realizar sobre un <em>stream</em> pueden ser <em>intermediarias</em> o <em>terminales</em>.</p>
+<p>Las operaciones sobre un stream pueden ser intermediarias o terminales</p>
 <ul>
-<li>Las operaciones intermediarias devuelven un nuevo <em>stream</em>, permitiendo encadenar múltiples operaciones intermediarias sin usar punto y coma.</li>
-<li>Por otro lado, las operaciones terminales son nulas o devuelven un resultado de un tipo diferente, por ejemplo un tipo numérico.</li>
+<li>Las operaciones <strong>intermediarias</strong> devuelven un nuevo stream permitiendo encadenar múltiples operaciones intermediarias sin usar punto y coma</li>
+<li>Las operaciones <strong>terminales</strong> son nulas o devuelven un resultado de un tipo diferente, normalmente un valor agregado a partir de cómputos anteriores</li>
 </ul>
-<blockquote>
-<p><img alt="streams en Java 8" src="./figuras/streamEjemplo.png" /></p>
-<p><small>por <cite>Benjamin, <a href="https://winterbe.com/posts/2014/07/31/java8-stream-tutorial-examples/">Java 8 Stream Tutorial</a></cite></small></p>
-</blockquote>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Main</span><span class="p">{</span>
+  <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span> <span class="o">[]</span><span class="n">args</span><span class="p">){</span>
+    <span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">myList</span> <span class="o">=</span>
+      <span class="n">Arrays</span><span class="p">.</span><span class="na">asList</span><span class="p">(</span><span class="s">&quot;a1&quot;</span><span class="p">,</span> <span class="s">&quot;a2&quot;</span><span class="p">,</span> <span class="s">&quot;b1&quot;</span><span class="p">,</span> <span class="s">&quot;c2&quot;</span><span class="p">,</span> <span class="s">&quot;c1&quot;</span><span class="p">);</span>
+    <span class="n">myList</span>
+      <span class="p">.</span><span class="na">stream</span><span class="p">()</span>
+      <span class="p">.</span><span class="na">filter</span><span class="p">(</span><span class="n">s</span> <span class="o">-&gt;</span> <span class="n">s</span><span class="p">.</span><span class="na">startsWith</span><span class="p">(</span><span class="s">&quot;c&quot;</span><span class="p">))</span>
+      <span class="p">.</span><span class="na">map</span><span class="p">(</span><span class="n">String</span><span class="p">::</span><span class="n">toUpperCase</span><span class="p">)</span>
+      <span class="p">.</span><span class="na">sorted</span><span class="p">()</span>
+      <span class="p">.</span><span class="na">forEach</span><span class="p">(</span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">::</span><span class="n">println</span><span class="p">);</span>      
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
 <p>En el ejemplo anterior, las operaciones <code>filter</code>, <code>map</code> y <code>sorted</code> son operaciones intermediarias, mientras que la operación <code>forEach</code> es una operación terminal.</p>
 <p>Más información: <a href="https://www.oracle.com/technetwork/es/articles/java/procesamiento-streams-java-se-8-2763402-esa.html">https://www.oracle.com/technetwork/es/articles/java/procesamiento-streams-java-se-8-2763402-esa.html</a></p>
 <p>Por otro lado, se puede observar que la mayoría de las operaciones que se aplican sobre <em>streams</em> aceptan algún tipo de parámetro en forma de <em>expresión lambda</em>, que es una interfaz funcional que especifica el comportamiento exacto de la operación. Estas operaciones no pueden modificar el contenido del <em>stream</em> original.</p>
-<p>En el ejemplo anterior, se puede observar que ninguna de las operaciones modifica la variable <code>myList</code> añadiendo o eliminando elementos, sino que sólo se realiza el filtrado de los elementos que no empiezan por "c", se transforman a mayúsculas, se ordenan en orden alfabético y se imprimen por pantalla.</p>
-<p>Más información: <a href="https://www.oracle.com/technetwork/es/articles/java/expresiones-lambda-api-stream-java-2737544-esa.html">https://www.oracle.com/technetwork/es/articles/java/expresiones-lambda-api-stream-java-2737544-esa.html</a></p>
-<p>Finalmente, se incluye otro ejemplo del uso del Stream API en Java:</p>
+<p>En el ejemplo anterior, se puede observar que ninguna de las operaciones modifica el estado de <code>myList</code> añadiendo o eliminando elementos, sino que sólo se filtran los elementos que empiezan por <em>c</em>, se transforman a mayúsculas, se ordenan (por defecto, alfabéticamente) y se imprimen por pantalla.</p>
+<p>Otro ejemplo del uso del Stream API en Java:</p>
 <div class="highlight"><pre><span></span><code><span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span> <span class="n">mayores</span> <span class="o">=</span> <span class="p">(</span><span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span><span class="p">)</span> <span class="n">Arrays</span>
     <span class="p">.</span><span class="na">asList</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
     <span class="p">.</span><span class="na">stream</span><span class="p">()</span>
@@ -451,7 +459,6 @@
     <span class="p">.</span><span class="na">collect</span><span class="p">(</span>
        <span class="n">Collectors</span><span class="p">.</span><span class="na">toCollection</span><span class="p">(()</span> <span class="o">-&gt;</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span><span class="p">())</span>
     <span class="p">);</span>
-
 <span class="n">mayores</span><span class="p">.</span><span class="na">forEach</span><span class="p">(</span><span class="n">e</span> <span class="o">-&gt;</span> <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">e</span><span class="p">));</span>
 </code></pre></div>
 <p>En el ejemplo anterior se realiza el filtrado de los números que sean mayores que 5 y, posteriormente, se imprimen por pantalla los elementos de la lista. Por lo tanto, la salida del programa por consola en este caso sería:</p>
@@ -462,18 +469,18 @@
 10
 </code></pre></div>
 <h2 id="definicion-de-operaciones-disponibles-en-la-api">Definición de operaciones disponibles en la API<a class="headerlink" href="#definicion-de-operaciones-disponibles-en-la-api" title="Permanent link">&para;</a></h2>
-<p>A continuación, se describen las operaciones disponibles en el Stream API haciendo la comparativa con las consultas realizadas en SQL:</p>
+<p>A continuación, se describen las operaciones disponibles en el Java Stream API, haciendo la comparativa con las consultas equivalentes si se realizaran en SQL:</p>
 <h3 id="consultas-simples">Consultas simples<a class="headerlink" href="#consultas-simples" title="Permanent link">&para;</a></h3>
 <p>En este caso se desea listar el nombre de todos los productos disponibles en la base de datos.</p>
 <p>Si se considera la siguiente consulta SQL:</p>
 <div class="highlight"><pre><span></span><code><span class="k">select</span> <span class="n">name</span> <span class="k">from</span> <span class="n">products</span><span class="p">;</span>
 </code></pre></div>
-<p>El equivalente con Stream API sería:</p>
+<p>El equivalente con el Java Stream API sería:</p>
 <div class="highlight"><pre><span></span><code><span class="n">List</span><span class="o">&lt;</span><span class="n">Products</span><span class="o">&gt;</span> <span class="n">products</span><span class="p">;</span>
 
 <span class="p">...</span>
 
-<span class="n">Stream</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">streams</span> <span class="o">=</span> <span class="n">products</span><span class="p">.</span><span class="na">stream</span><span class="p">().</span><span class="na">map</span><span class="p">(</span><span class="n">Product</span><span class="p">::</span><span class="n">getName</span><span class="p">);</span>
+<span class="n">Stream</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">stream</span> <span class="o">=</span> <span class="n">products</span><span class="p">.</span><span class="na">stream</span><span class="p">().</span><span class="na">map</span><span class="p">(</span><span class="n">Product</span><span class="p">::</span><span class="n">getName</span><span class="p">);</span>
 </code></pre></div>
 <ul>
 <li>Con el método <code>stream()</code> se obtiene la secuencia de elementos de tipo <code>Product</code>. Sería equivalente al <code>from</code> de SQL.</li>
@@ -484,32 +491,35 @@
 <p>Si se considera la siguiente consulta SQL:</p>
 <div class="highlight"><pre><span></span><code><span class="k">select</span> <span class="n">name</span> <span class="k">from</span> <span class="n">products</span> <span class="k">where</span> <span class="n">units_in_stock</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">;</span>
 </code></pre></div>
-<p>El equivalente con Stream API sería:</p>
-<div class="highlight"><pre><span></span><code><span class="n">Stream</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">streams</span> <span class="o">=</span> <span class="n">products</span><span class="p">.</span><span class="na">stream</span><span class="p">().</span><span class="na">filter</span><span class="p">(</span><span class="n">p</span> <span class="o">-&gt;</span> <span class="n">p</span><span class="p">.</span><span class="na">getUnitsInStock</span><span class="p">()</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">).</span><span class="na">map</span><span class="p">(</span><span class="n">Product</span><span class="p">::</span><span class="n">getName</span><span class="p">);</span>
-
-<span class="n">streams</span><span class="p">.</span><span class="na">forEach</span><span class="p">(</span><span class="n">product</span> <span class="o">-&gt;</span> <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">product</span><span class="p">));</span>
+<p>El equivalente con el Java Stream API sería:</p>
+<div class="highlight"><pre><span></span><code><span class="n">Stream</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">stream</span> <span class="o">=</span> <span class="n">products</span><span class="p">.</span><span class="na">stream</span><span class="p">()</span>
+        <span class="p">.</span><span class="na">filter</span><span class="p">(</span><span class="n">p</span> <span class="o">-&gt;</span> <span class="n">p</span><span class="p">.</span><span class="na">getUnitsInStock</span><span class="p">()</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">)</span>
+        <span class="p">.</span><span class="na">map</span><span class="p">(</span><span class="n">Product</span><span class="p">::</span><span class="n">getName</span><span class="p">);</span>
 </code></pre></div>
 <ul>
 <li>Con el método <code>stream()</code> se obtiene la secuencia de elementos de tipo <code>Product</code>. Sería equivalente al <code>from</code> de SQL.</li>
-<li>Con el método <code>filter</code> se recuperan únicamente los productos que cumplan la condición que se le pasa como parámetro. En este caso, los que su número de unidades sea mayor a 10. Sería equivalente al <code>where</code> de SQL.</li>
+<li>Con el método <code>filter</code> se recuperan únicamente los productos que cumplan la condición que se le pasa como parámetro. En este caso, los que su número de unidades sea mayor que 10. Sería equivalente al <code>where</code> de SQL.</li>
 <li>Con el método <code>map</code> se recupera únicamente el atributo <code>name</code>. Sería equivalente al <code>select</code> de SQL.</li>
 </ul>
+<p>Si además se quiere imprimir el resultado obtenido en <code>streams</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="n">stream</span><span class="p">.</span><span class="na">forEach</span><span class="p">(</span><span class="n">product</span> <span class="o">-&gt;</span> <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">product</span><span class="p">));</span>
+</code></pre></div>
 <h3 id="consultas-con-ordenacion">Consultas con ordenación<a class="headerlink" href="#consultas-con-ordenacion" title="Permanent link">&para;</a></h3>
 <p>En este caso se desea listar los nombres de los productos cuya existencia en el almacén sea menor a 10 unidades pero en orden ascendente, es decir, de menor existencia a mayor existencia.</p>
 <p>Si se considera la siguiente consulta SQL:</p>
 <div class="highlight"><pre><span></span><code><span class="k">select</span> <span class="n">name</span> <span class="k">from</span> <span class="n">products</span> <span class="k">where</span> <span class="n">units_in_stock</span> <span class="o">&lt;</span> <span class="mi">10</span>
 <span class="k">order</span> <span class="k">by</span> <span class="n">units_in_stock</span> <span class="k">asc</span><span class="p">;</span>
 </code></pre></div>
-<p>El equivalente con Stream API sería:</p>
-<div class="highlight"><pre><span></span><code><span class="n">Stream</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">streams</span> <span class="o">=</span> <span class="n">products</span><span class="p">.</span><span class="na">stream</span><span class="p">()</span>
+<p>El equivalente con Java Stream API sería:</p>
+<div class="highlight"><pre><span></span><code><span class="n">Stream</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">stream</span> <span class="o">=</span> <span class="n">products</span><span class="p">.</span><span class="na">stream</span><span class="p">()</span>
                 <span class="p">.</span><span class="na">filter</span><span class="p">(</span><span class="n">p</span> <span class="o">-&gt;</span> <span class="n">p</span><span class="p">.</span><span class="na">getUnitsInStock</span><span class="p">()</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">)</span>
                 <span class="p">.</span><span class="na">sorted</span><span class="p">(</span><span class="n">Comparator</span><span class="p">.</span><span class="na">comparingDouble</span><span class="p">(</span><span class="n">Product</span><span class="p">::</span><span class="n">getUnitsInStock</span><span class="p">))</span>
                 <span class="p">.</span><span class="na">map</span><span class="p">(</span><span class="n">Product</span><span class="p">::</span><span class="n">getName</span><span class="p">);</span>
 </code></pre></div>
 <ul>
 <li>Con el método <code>stream()</code> se obtiene la secuencia de elementos de tipo <code>Product</code>. Sería equivalente al <code>from</code> de SQL.</li>
-<li>Con el método <code>filter</code> se recuperan únicamente los productos que cumplan la condición que se le pasa como parámetro. En este caso, los que su número de unidades sea mayor a 10. Sería equivalente al <code>where</code> de SQL.</li>
-<li>Con el método <code>sorted</code> se recuperan los productos utilizando el método de ordenación que recibe como parámetro. En este caso, los recupera en orden ascendente comparando su número de unidades. Sería equivalente al <code>order by</code> de SQL.</li>
+<li>Con el método <code>filter</code> se recuperan únicamente los productos que cumplan la condición que se le pasa como parámetro en forma de expresión lambda (En este caso, aquellos con un número de unidades mayor que 10). Sería equivalente al <code>where</code> de SQL.</li>
+<li>Con el método <code>sorted</code> se recuperan los productos utilizando el método de ordenación que recibe como parámetro. En este caso, los recupera en orden ascendente por el número de unidades. Sería equivalente al <code>order by</code> de SQL.</li>
 <li>Con el método <code>map</code> se recupera únicamente el atributo <code>name</code>. Sería equivalente al <code>select</code> de SQL.</li>
 </ul>
 <h3 id="consultas-con-agrupacion">Consultas con agrupación<a class="headerlink" href="#consultas-con-agrupacion" title="Permanent link">&para;</a></h3>
@@ -518,7 +528,7 @@
 <div class="highlight"><pre><span></span><code><span class="k">select</span> <span class="k">count</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="n">supplierID</span> <span class="k">from</span> <span class="n">products</span>
 <span class="k">group</span> <span class="k">by</span> <span class="n">supplierID</span>
 </code></pre></div>
-<p>El equivalente con Stream API sería:</p>
+<p>El equivalente con Java Stream API sería:</p>
 <div class="highlight"><pre><span></span><code><span class="n">Map</span><span class="o">&lt;</span><span class="n">Integer</span><span class="p">,</span> <span class="n">Long</span><span class="o">&gt;</span> <span class="n">collect</span> <span class="o">=</span> <span class="n">products</span><span class="p">.</span><span class="na">stream</span><span class="p">()</span>
     <span class="p">.</span><span class="na">collect</span><span class="p">(</span>
         <span class="n">Collectors</span><span class="p">.</span><span class="na">groupingBy</span><span class="p">(</span>
@@ -536,28 +546,29 @@
 <h3 id="consultas-con-sumatorios">Consultas con sumatorios<a class="headerlink" href="#consultas-con-sumatorios" title="Permanent link">&para;</a></h3>
 <p>En este caso se desea obtener la suma del precio unitario de todos los productos agrupados por el número existente en el almacen.</p>
 <p>Si se considera la siguiente consulta SQL:</p>
-<div class="highlight"><pre><span></span><code><span class="k">select</span>  <span class="n">unitsInStock</span><span class="p">,</span> <span class="k">sum</span><span class="p">(</span><span class="n">unitPrice</span><span class="p">)</span> <span class="k">from</span> <span class="n">products</span>
+<div class="highlight"><pre><span></span><code><span class="k">select</span> <span class="n">unitsInStock</span><span class="p">,</span> <span class="k">sum</span><span class="p">(</span><span class="n">unitPrice</span><span class="p">)</span> <span class="k">from</span> <span class="n">products</span>
 <span class="k">group</span> <span class="k">by</span> <span class="n">unitsInStock</span><span class="p">;</span>
 </code></pre></div>
-<p>El equivalente con Stream API sería:</p>
+<p>El equivalente con Java Stream API sería:
+å
 <div class="highlight"><pre><span></span><code><span class="n">Map</span><span class="o">&lt;</span><span class="n">Integer</span><span class="p">,</span> <span class="n">Double</span><span class="o">&gt;</span> <span class="n">collect</span> <span class="o">=</span> <span class="n">products</span><span class="p">.</span><span class="na">stream</span><span class="p">()</span>
-        <span class="p">.</span><span class="na">collect</span><span class="p">(</span>
-            <span class="n">Collectors</span><span class="p">.</span><span class="na">groupingBy</span><span class="p">(</span>
-                <span class="n">Product</span><span class="p">::</span><span class="n">getUnitsInStock</span><span class="p">,</span>
-                <span class="n">Collectors</span><span class="p">.</span><span class="na">summingDouble</span><span class="p">(</span>
-                    <span class="n">Product</span><span class="p">::</span><span class="n">getUnitPrice</span>
-                <span class="p">)</span>
+    <span class="p">.</span><span class="na">collect</span><span class="p">(</span>
+        <span class="n">Collectors</span><span class="p">.</span><span class="na">groupingBy</span><span class="p">(</span>
+            <span class="n">Product</span><span class="p">::</span><span class="n">getUnitsInStock</span><span class="p">,</span>
+            <span class="n">Collectors</span><span class="p">.</span><span class="na">summingDouble</span><span class="p">(</span>
+                <span class="n">Product</span><span class="p">::</span><span class="n">getUnitPrice</span>
             <span class="p">)</span>
-        <span class="p">);</span>
+        <span class="p">)</span>
+    <span class="p">);</span>
 
 <span class="n">collect</span><span class="p">.</span><span class="na">forEach</span><span class="p">((</span><span class="n">stock</span><span class="p">,</span> <span class="n">suma</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">printf</span><span class="p">(</span><span class="s">&quot;en stock: %s: suma: %s \n&quot;</span><span class="p">,</span> <span class="n">stock</span><span class="p">,</span><span class="n">suma</span><span class="p">));</span>
-</code></pre></div>
+</code></pre></div></p>
 <ul>
 <li>Con el método <code>stream()</code> se obtiene la secuencia de elementos de tipo <code>Product</code>. Sería equivalente al <code>from</code> de SQL.</li>
 <li>Con el método <code>collect</code> se realiza el agrupamiento a través de los criterios recibidos como parámetros. En este caso, los productos se agrupan por número de unidades existentes en el almacen y se suman. Sería el equivalent a <code>group by</code> con el uso de <code>sum</code> en SQL.</li>
 </ul>
 <h3 id="consultas-con-filtrado-sobre-grupos">Consultas con filtrado sobre grupos<a class="headerlink" href="#consultas-con-filtrado-sobre-grupos" title="Permanent link">&para;</a></h3>
-<p>En este caso se desea obtener la suma del precio unitario de todos los productos agrupados por su número de existencias en el almacen, pero solo obtener aquellos productos cuya suma sea mayor a 100.</p>
+<p>En este caso se desea obtener la suma del precio unitario de todos los productos agrupados por su número de existencias en el almacen, pero solo obtener aquellos productos cuya suma sea mayor que 100.</p>
 <p>Si se considera la siguiente consulta SQL:</p>
 <div class="highlight"><pre><span></span><code><span class="k">select</span>  <span class="n">unitsInStock</span><span class="p">,</span> <span class="k">sum</span><span class="p">(</span><span class="n">unitPrice</span><span class="p">)</span> <span class="k">from</span> <span class="n">products</span>
 <span class="k">group</span> <span class="k">by</span> <span class="n">unitsInStock</span>
@@ -582,12 +593,12 @@
 <ul>
 <li>Con el método <code>stream()</code> se obtiene la secuencia de elementos de tipo <code>Product</code>. Sería equivalente al <code>from</code> de SQL</li>
 <li>Con el método <code>collect</code> se realiza el agrupamiento a través de los criterios recibidos como parámetros. En este caso, los productos se agrupan por número de unidades existentes en el almacen y se suman. Sería el equivalent a <code>group by</code> con el uso de <code>sum</code> en SQL.</li>
-<li>Con el método <code>filter</code> se recuperan únicamente los productos que cumplan la condición que se le pasa como parámetro. En este caso, los que la suma sea mayor a 100. En este caso, sería equivalente al <code>having</code> de SQL porque va detrás de una operación con criterios de agrupación.</li>
+<li>Con el método <code>filter</code> se recuperan únicamente los productos que cumplan la condición que se le pasa como parámetro. En este caso, los que la suma sea mayor que 100. En este caso, sería equivalente al <code>having</code> de SQL porque va detrás de una operación con criterios de agrupación.</li>
 </ul>
-<h1 id="ejercicios-propuestos"><span style="color:blue">Ejercicios propuestos</span><a class="headerlink" href="#ejercicios-propuestos" title="Permanent link">&para;</a></h1>
+<h1 id="ejercicios-propuestos">Ejercicios propuestos<a class="headerlink" href="#ejercicios-propuestos" title="Permanent link">&para;</a></h1>
 <h2 id="ejercicio-1">Ejercicio 1<a class="headerlink" href="#ejercicio-1" title="Permanent link">&para;</a></h2>
 <p>Dados los siguientes fragmentos de código, responder a las siguientes preguntas:</p>
-<h3 id="employeejava">Employee.java<a class="headerlink" href="#employeejava" title="Permanent link">&para;</a></h3>
+<h3 id="employeejava"><code>Employee.java</code><a class="headerlink" href="#employeejava" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Employee</span> <span class="p">{</span>
 
     <span class="n">String</span> <span class="n">name</span><span class="p">;</span>
@@ -619,7 +630,7 @@
     <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<h3 id="employeedatabasejava">EmployeeDatabase.java<a class="headerlink" href="#employeedatabasejava" title="Permanent link">&para;</a></h3>
+<h3 id="employeedatabasejava"><code>EmployeeDatabase.java</code><a class="headerlink" href="#employeedatabasejava" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">java.util.ArrayList</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nn">java.util.Arrays</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nn">java.util.List</span><span class="p">;</span>
@@ -673,15 +684,21 @@
     <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<h3 id="mainjava">Main.java<a class="headerlink" href="#mainjava" title="Permanent link">&para;</a></h3>
+<h3 id="mainjava"><code>Main.java</code><a class="headerlink" href="#mainjava" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Main</span> <span class="p">{</span>
     <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span> <span class="n">args</span><span class="o">[]</span><span class="p">)</span> <span class="p">{</span>
-        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Employee = &quot;</span> <span class="o">+</span> <span class="n">EmployeeDatabase</span><span class="p">.</span><span class="na">getEmployeeByName</span><span class="p">(</span><span class="s">&quot;Employee1&quot;</span><span class="p">));</span>
-        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Employee = &quot;</span> <span class="o">+</span> <span class="n">EmployeeDatabase</span><span class="p">.</span><span class="na">getEmployeeByName</span><span class="p">(</span><span class="s">&quot;EmployeeNull&quot;</span><span class="p">));</span>
-        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Employee = &quot;</span> <span class="o">+</span> <span class="n">EmployeeDatabase</span><span class="p">.</span><span class="na">getEmployeeByNameAndAge</span><span class="p">(</span><span class="s">&quot;Employee2&quot;</span><span class="p">,</span> <span class="mi">30</span><span class="p">));</span>
-        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Employee = &quot;</span> <span class="o">+</span> <span class="n">EmployeeDatabase</span><span class="p">.</span><span class="na">getEmployeeByNameAndAge</span><span class="p">(</span><span class="s">&quot;Employee2&quot;</span><span class="p">,</span> <span class="mi">20</span><span class="p">));</span>
-        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Employees = &quot;</span> <span class="o">+</span> <span class="n">EmployeeDatabase</span><span class="p">.</span><span class="na">getEmployeeByAgeOver</span><span class="p">(</span><span class="mi">30</span><span class="p">));</span>
-        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Employees = &quot;</span> <span class="o">+</span> <span class="n">EmployeeDatabase</span><span class="p">.</span><span class="na">getEmployeeByAgeUnder</span><span class="p">(</span><span class="mi">30</span><span class="p">));</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Employee = &quot;</span> <span class="o">+</span>
+          <span class="n">EmployeeDatabase</span><span class="p">.</span><span class="na">getEmployeeByName</span><span class="p">(</span><span class="s">&quot;Employee1&quot;</span><span class="p">));</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Employee = &quot;</span> <span class="o">+</span>
+          <span class="n">EmployeeDatabase</span><span class="p">.</span><span class="na">getEmployeeByName</span><span class="p">(</span><span class="s">&quot;EmployeeNull&quot;</span><span class="p">));</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Employee = &quot;</span> <span class="o">+</span>
+          <span class="n">EmployeeDatabase</span><span class="p">.</span><span class="na">getEmployeeByNameAndAge</span><span class="p">(</span><span class="s">&quot;Employee2&quot;</span><span class="p">,</span> <span class="mi">30</span><span class="p">));</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Employee = &quot;</span> <span class="o">+</span>
+          <span class="n">EmployeeDatabase</span><span class="p">.</span><span class="na">getEmployeeByNameAndAge</span><span class="p">(</span><span class="s">&quot;Employee2&quot;</span><span class="p">,</span> <span class="mi">20</span><span class="p">));</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Employees = &quot;</span> <span class="o">+</span>
+          <span class="n">EmployeeDatabase</span><span class="p">.</span><span class="na">getEmployeeByAgeOver</span><span class="p">(</span><span class="mi">30</span><span class="p">));</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Employees = &quot;</span> <span class="o">+</span>
+          <span class="n">EmployeeDatabase</span><span class="p">.</span><span class="na">getEmployeeByAgeUnder</span><span class="p">(</span><span class="mi">30</span><span class="p">));</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
@@ -705,8 +722,8 @@
 <p>Implemente la clase <code>Videogame</code> contemplando los siguientes criterios:</p>
 <p>a) La clase contendrá los siguientes atributos:</p>
 <ul>
-<li>El título de tipo string.</li>
-<li>La categoría de tipo string.</li>
+<li>El título de tipo String.</li>
+<li>La categoría de tipo String.</li>
 <li>El precio de tipo double.</li>
 </ul>
 <p>b) La clase contendrá las operaciones <code>set</code> y <code>get</code> necesarias para el acceso a los atributos anteriores.</p>
